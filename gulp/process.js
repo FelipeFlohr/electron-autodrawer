@@ -23,6 +23,10 @@ function processFrontendScripts(callback) {
     const ts = processFrontendTS()
 
     return merge(js, ts)
+        .pipe(babel({
+            comments: false,
+            presets: ["@babel/preset-env"]
+        }))
         .pipe(uglify({
             compress: true
         }))
@@ -31,7 +35,7 @@ function processFrontendScripts(callback) {
 }
 
 function processFrontendSASS(callback) {
-    return gulp.src(["src/view/sass/index.scss", "node_modules/bootstrap/scss/bootstrap.scss"], {
+    return gulp.src("src/view/assets/sass/index.scss", {
         allowEmpty: true
     })
         .pipe(sass())
@@ -40,26 +44,39 @@ function processFrontendSASS(callback) {
         .pipe(gulp.dest("dist/view/assets/css"))
 }
 
+function processFrontendHTML(callback) {
+    return gulp.src("src/view/**/*.html")
+        .pipe(htmlmin({ collapseWhitespace: true, removeComments: true }))
+        .pipe(gulp.dest("dist/view"))
+}
+
+function processBootstrapJS(callback) {
+    return gulp.src("node_modules/bootstrap/dist/js/bootstrap.js")
+        .pipe(babel({
+            comments: false,
+            presets: ["@babel/preset-env"]
+        }))
+        .pipe(uglify({
+            compress: true
+        }))
+        .pipe(concat("bootstrap.min.js"))
+        .pipe(gulp.dest("dist/view/assets/js"))
+}
+
 module.exports = {
     processTS,
     processFrontendScripts,
-    processFrontendSASS
+    processFrontendSASS,
+    processFrontendHTML,
+    processBootstrapJS
 }
 
 // Process to merge
 function processFrontendTS() {
     return gulp.src("src/view/**/*.ts")
         .pipe(ts())
-        .pipe(babel({
-            comments: false,
-            presets: ["@babel/preset-env"]
-        }))
 }
 
 function processFrontendJS() {
-    return gulp.src(["src/view/**/*.js", "node_modules/bootstrap/dist/js/bootstrap.js"])
-        .pipe(babel({
-            comments: false,
-            presets: ["@babel/preset-env"]
-        }))
+    return gulp.src(["src/view/**/*.js"])
 }
