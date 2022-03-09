@@ -1,3 +1,6 @@
-@import "../../../../node_modules/bootstrap/scss/bootstrap.scss"; // Imports Bootstrap
+@import "../../../../node_modules/bootstrap/scss/bootstrap.scss";
 
-@import "main";
+@import "./global.scss";
+
+@import "./navbar.scss";
+@import "./pages.scss";

@@ -1,0 +1,13 @@
+html {
+    height: 100vh;
+}
+
+.light-mode {
+    background-color: $light;
+    color: $dark;
+}
+
+.dark-mode {
+    background-color: $dark;
+    color: $light;
+}

@@ -7,6 +7,7 @@ const merge = require("merge-stream")
 const concat = require("gulp-concat")
 const sass = require("gulp-sass")(require("sass"))
 const uglifycss = require("gulp-uglifycss")
+const { extensions } = require("./extensions.json")
 
 function processTS(callback) {
     return gulp.src(["src/**/*.ts", "!src/view/**/*.ts"])
@@ -59,8 +60,18 @@ function processBootstrapJS(callback) {
         .pipe(uglify({
             compress: true
         }))
-        .pipe(concat("bootstrap.min.js"))
+        .pipe(concat("app.min.js"))
         .pipe(gulp.dest("dist/view/assets/js"))
+}
+
+function processOtherFiles(callback) {
+    const extensionsPath = []
+    extensions.forEach(extension => {
+        extensionsPath.push(extension.startsWith(".") ? `src/**/*${extension}` : `src/**/*.${extension}`)
+    })
+
+    return gulp.src(extensionsPath)
+        .pipe(gulp.dest("dist"))
 }
 
 module.exports = {
@@ -68,7 +79,8 @@ module.exports = {
     processFrontendScripts,
     processFrontendSASS,
     processFrontendHTML,
-    processBootstrapJS
+    processBootstrapJS,
+    processOtherFiles
 }
 
 // Process to merge

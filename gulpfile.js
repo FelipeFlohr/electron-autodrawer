@@ -1,4 +1,9 @@
-const { processTS, processFrontendScripts, processFrontendSASS, processFrontendHTML, processBootstrapJS, processBootstrapSASS } = require("./gulp/process")
+const { processTS,
+    processFrontendScripts,
+    processFrontendSASS,
+    processFrontendHTML,
+    processBootstrapJS,
+    processOtherFiles } = require("./gulp/process")
 const { parallel } = require("gulp")
 
 module.exports.default = parallel(
@@ -6,4 +11,5 @@ module.exports.default = parallel(
     processFrontendScripts,
     processFrontendSASS,
     processFrontendHTML,
-    processBootstrapJS)
+    processBootstrapJS,
+    processOtherFiles)
