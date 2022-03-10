@@ -7,6 +7,7 @@ const merge = require("merge-stream")
 const concat = require("gulp-concat")
 const sass = require("gulp-sass")(require("sass"))
 const uglifycss = require("gulp-uglifycss")
+const purgecss = require("gulp-purgecss")
 const { extensions } = require("./extensions.json")
 
 function processTS(callback) {
@@ -42,6 +43,9 @@ function processFrontendSASS(callback) {
         .pipe(sass())
         .pipe(uglifycss({ "uglyComments": true }))
         .pipe(concat("app.min.css"))
+        // .pipe(purgecss({
+        //     content: ["src/view/**/*.html"]
+        // }))
         .pipe(gulp.dest("dist/view/assets/css"))
 }
 
@@ -90,5 +94,5 @@ function processFrontendTS() {
 }
 
 function processFrontendJS() {
-    return gulp.src(["src/view/**/*.js"])
+    return gulp.src(["src/view/**/*.js", "node_modules/bootstrap/dist/js/bootstrap.js"])
 }

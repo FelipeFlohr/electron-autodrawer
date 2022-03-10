@@ -1,3 +1,16 @@
 main {
-    margin: 32px 18px;
+    height: 90vh;
+    padding: 32px 18px;
+}
+
+.fs-huge {
+    font-size: calc(2rem + 1.5vw);
+}
+
+.green-svg {
+    fill: lightgreen;
+}
+
+.red-svg {
+    fill: red;
 }
