@@ -27,10 +27,8 @@ function configLinks() {
 function initialNav() {
     if (location.hash) {
         navThroughAjax(location.hash)
-        console.log("caiu aqui1. Location: " + location.hash)
     } else {
         const firstLink = document.querySelector("[rPage]")
-        console.log("caiu aqui. firstLink: " + firstLink.getAttribute("rPage"))
         navThroughAjax(firstLink.getAttribute("rPage"))
     }
 }
