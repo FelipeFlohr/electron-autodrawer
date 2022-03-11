@@ -2,6 +2,7 @@ html {
     height: 100vh;
 }
 
+// Light and Dark Mode
 .light-mode {
     background-color: $light;
     color: $dark;
@@ -10,4 +11,51 @@ html {
 .dark-mode {
     background-color: $dark;
     color: $light;
+}
+
+// Animation classes
+.fadein-text {
+    animation-name: fadein-text;
+}
+
+.fadein-text-mb0-5 {
+    animation-name: fadein-text-mb0-5;
+}
+
+.duration-2s {
+    animation-duration: 2s;
+}
+
+.duration-4s {
+    animation-duration: 4s;
+}
+
+.delay-2s {
+    animation-delay: 2s;
+}
+
+// Animations
+@keyframes fadein-text {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadein-text-mb0-5 {
+    0% {
+        opacity: 0;
+        margin-bottom: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        margin-bottom: 3rem;
+    }
 }
