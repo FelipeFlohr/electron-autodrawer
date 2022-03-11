@@ -7,6 +7,18 @@ main {
     font-size: calc(2rem + 1.5vw);
 }
 
+.mt-6 {
+    margin-top: 4rem;
+}
+
+.border-025rem {
+    border-radius: 0.25rem !important;
+    border-top-right-radius: 0.25rem !important;
+    border-top-left-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+    border-bottom-left-radius: 0.25rem !important;
+}
+
 .green-svg {
     fill: lightgreen;
 }

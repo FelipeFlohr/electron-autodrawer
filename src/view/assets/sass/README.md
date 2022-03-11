@@ -1,0 +1,1 @@
+- "notimportant": Folder containing .SCSS values that serve as a replacement to some Bootstrap classes which are using the *!important* priority
