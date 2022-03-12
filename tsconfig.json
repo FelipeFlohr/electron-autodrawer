@@ -2,7 +2,7 @@
     "compilerOptions": {
         "module": "CommonJS",
         "esModuleInterop": true,
-        "target": "ES6",
+        "target": "es5",
         "noImplicitAny": false,
         "outDir": "dist",
         "baseUrl": ".",
@@ -11,7 +11,8 @@
         "rootDir": "src"
     },
     "include": [
-        "src/**/*"
+        "src/**/*",
+        "!src/view/**/*"
     ],
     "exclude": [
         "node_modules"

@@ -1,0 +1,66 @@
+{
+  "toolMarker": {
+    "x": 1700,
+    "y": 161
+  },
+  "toolWatercolor":{
+    "x": 1834,
+    "y": 161
+  },
+  "toolPixelPencil": {
+    "x": 1876,
+    "y": 161
+  },
+  "toolGraphitePencil": {
+    "x": 1700,
+    "y": 215
+  },
+  "toolCrayon": {
+    "x": 1790,
+    "y": 215
+  },
+  "boxBrushSize": {
+    "x": 1866,
+    "y": 284
+  },
+  "boxBrushOpacity": {
+    "x": 1866,
+    "y": 364
+  },
+  "boxZoom": {
+    "x": 1575,
+    "y": 100
+  },
+  "buttonSelectedColorPreview": {
+    "x": 1751,
+    "y": 814
+  },
+  "selectColorRed": {
+    "x": 1145,
+    "y": 487
+  },
+  "selectColorGreen": {
+    "x": 1145,
+    "y": 545
+  },
+  "selectColorBlue": {
+    "x": 1145,
+    "y": 602
+  },
+  "selectColorOkButton": {
+    "x": 858,
+    "y": 726
+  },
+  "canvasTopLeftCorner": {
+    "x": 336,
+    "y": 215
+  },
+  "canvasBottomRightCorner": {
+    "x": 1324,
+    "y": 948
+  },
+  "contextRedefineCanvas": {
+    "x": 100,
+    "y": 210
+  }
+}

@@ -12,10 +12,17 @@ const { extensions } = require("./extensions.json")
 
 function processTS(callback) {
     return gulp.src(["src/**/*.ts", "!src/view/**/*.ts"])
-        .pipe(ts())
+        .pipe(ts({
+            isolatedModules: true,
+            target: "ES5",
+            module: "CommonJS"
+        }))
         .pipe(babel({
             comments: false,
             presets: ["@babel/preset-env"]
+        }))
+        .pipe(uglify({
+            compress: true
         }))
         .pipe(gulp.dest("dist"))
 }
