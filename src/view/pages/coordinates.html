@@ -7,16 +7,272 @@
     </header>
     <div class="container mt-6">
         <div class="row">
-            <section class="col"> <!-- Coordinates -->
-                <div class="input-group">
-                    <span class="mt-2 ml-2">bla bla bla:</span>
-                    <input type="text" class="form-control mx-2 border-025rem" placeholder="x" aria-label="X">
-                    <input type="text" class="form-control mx-2 border-025rem" placeholder="y" aria-label="Y">
-                    <span svg-working>svg goes here</span>
+            <div class="col col-xxl-10">
+                <div class="container">
+                    <!-- Coordinates -->
+                    <div class="row">
+                        <div class="col" id="toolMarker">
+                            <span class="mt-2 ml-2">Tool | Marker:</span>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
+                                    aria-label="X">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
+                                    aria-label="Y">
+                            </div>
+                        </div>
+                        <div class="col col-sm-1">
+                            <span svg-working>svg goes here</span>
+                        </div>
+                    </div>
+                    <div class="row" id="toolWatercolor">
+                        <div class="col">
+                            <span class="mt-2 ml-2">Tool | Watercolor:</span>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
+                                    aria-label="X">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
+                                    aria-label="Y">
+                            </div>
+                        </div>
+                        <div class="col col-sm-1">
+                            <span svg-working>svg goes here</span>
+                        </div>
+                    </div>
+                    <div class="row" id="toolPixelPencil">
+                        <div class="col">
+                            <span class="mt-2 ml-2">Tool | Pixel Pencil:</span>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
+                                    aria-label="X">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
+                                    aria-label="Y">
+                            </div>
+                        </div>
+                        <div class="col col-sm-1">
+                            <span svg-working>svg goes here</span>
+                        </div>
+                    </div>
+                    <div class="row" id="toolGraphitePencil">
+                        <div class="col">
+                            <span class="mt-2 ml-2">Tool | Graphite Pencil:</span>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
+                                    aria-label="X">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
+                                    aria-label="Y">
+                            </div>
+                        </div>
+                        <div class="col col-sm-1">
+                            <span svg-working>svg goes here</span>
+                        </div>
+                    </div>
+                    <div class="row" id="toolCrayon">
+                        <div class="col">
+                            <span class="mt-2 ml-2">Tool | Crayon:</span>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
+                                    aria-label="X">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
+                                    aria-label="Y">
+                            </div>
+                        </div>
+                        <div class="col col-sm-1">
+                            <span svg-working>svg goes here</span>
+                        </div>
+                    </div>
+                    <div class="row" id="boxBrushSize">
+                        <div class="col">
+                            <span class="mt-2 ml-2">Values | Brush Size:</span>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
+                                    aria-label="X">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
+                                    aria-label="Y">
+                            </div>
+                        </div>
+                        <div class="col col-sm-1">
+                            <span svg-working>svg goes here</span>
+                        </div>
+                    </div>
+                    <div class="row" id="boxBrushOpacity">
+                        <div class="col">
+                            <span class="mt-2 ml-2">Values | Brush Opacity:</span>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
+                                    aria-label="X">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
+                                    aria-label="Y">
+                            </div>
+                        </div>
+                        <div class="col col-sm-1">
+                            <span svg-working>svg goes here</span>
+                        </div>
+                    </div>
+                    <div class="row" id="boxZoom">
+                        <div class="col">
+                            <span class="mt-2 ml-2">Values | Zoom:</span>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
+                                    aria-label="X">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
+                                    aria-label="Y">
+                            </div>
+                        </div>
+                        <div class="col col-sm-1">
+                            <span svg-working>svg goes here</span>
+                        </div>
+                    </div>
+                    <div class="row" id="buttonSelectedColorPreview">
+                        <div class="col">
+                            <span class="mt-2 ml-2">Button | Selected Color Preview:</span>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
+                                    aria-label="X">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
+                                    aria-label="Y">
+                            </div>
+                        </div>
+                        <div class="col col-sm-1">
+                            <span svg-working>svg goes here</span>
+                        </div>
+                    </div>
+                    <div class="row" id="selectColorRed">
+                        <div class="col">
+                            <span class="mt-2 ml-2">Color Selector | Red:</span>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
+                                    aria-label="X">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
+                                    aria-label="Y">
+                            </div>
+                        </div>
+                        <div class="col col-sm-1">
+                            <span svg-working>svg goes here</span>
+                        </div>
+                    </div>
+                    <div class="row" id="selectColorGreen">
+                        <div class="col">
+                            <span class="mt-2 ml-2">Color Selector | Green:</span>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
+                                    aria-label="X">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
+                                    aria-label="Y">
+                            </div>
+                        </div>
+                        <div class="col col-sm-1">
+                            <span svg-working>svg goes here</span>
+                        </div>
+                    </div>
+                    <div class="row" id="selectColorBlue">
+                        <div class="col">
+                            <span class="mt-2 ml-2">Color Selector | Blue:</span>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
+                                    aria-label="X">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
+                                    aria-label="Y">
+                            </div>
+                        </div>
+                        <div class="col col-sm-1">
+                            <span svg-working>svg goes here</span>
+                        </div>
+                    </div>
+                    <div class="row" id="selectColorOkButton">
+                        <div class="col">
+                            <span class="mt-2 ml-2">Color Selector | Ok Button:</span>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
+                                    aria-label="X">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
+                                    aria-label="Y">
+                            </div>
+                        </div>
+                        <div class="col col-sm-1">
+                            <span svg-working>svg goes here</span>
+                        </div>
+                    </div>
+                    <div class="row" id="canvasTopLeftCorner">
+                        <div class="col">
+                            <span class="mt-2 ml-2">Canvas | Top Left Corner:</span>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
+                                    aria-label="X">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
+                                    aria-label="Y">
+                            </div>
+                        </div>
+                        <div class="col col-sm-1">
+                            <span svg-working>svg goes here</span>
+                        </div>
+                    </div>
+                    <div class="row" id="canvasBottomRightCorner">
+                        <div class="col">
+                            <span class="mt-2 ml-2">Canvas | Bottom Right Corner:</span>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
+                                    aria-label="X">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
+                                    aria-label="Y">
+                            </div>
+                        </div>
+                        <div class="col col-sm-1">
+                            <span svg-working>svg goes here</span>
+                        </div>
+                    </div>
+                    <div class="row" id="contextRedefineCanvas">
+                        <div class="col">
+                            <span class="mt-2 ml-2">Context Menu | Redefine Canvas:</span>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="Relative x"
+                                    aria-label="X">
+                                <input type="text" class="form-control mx-2 border-025rem" placeholder="Relative y"
+                                    aria-label="Y">
+                            </div>
+                        </div>
+                        <div class="col col-sm-1">
+                            <span svg-working>svg goes here</span>
+                        </div>
+                    </div>
                 </div>
-            </section>
-            <aside class="col"> <!-- Cursor current position -->
-
+            </div>
+            <aside class="col col-sm-2">
+                <!-- Cursor current position -->
+                <h3>Current cursor position</h3>
+                <p>x: <span id="xCursorPos"></span></p>
+                <p>y: <span id="yCursorPos"></span></p>
             </aside>
         </div>
     </div>
