@@ -50,9 +50,8 @@ function route() {
 }
 
 window.onhashchange = (event: any) => {
-    console.log("caiu aqui")
     navThroughAjax(location.hash)
-    //route()
+    route()
 }
 
 configLinks()
