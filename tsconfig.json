@@ -7,7 +7,6 @@
         "outDir": "dist",
         "baseUrl": ".",
         "watch": true,
-        "resolveJsonModule": true,
         "rootDir": "src"
     },
     "include": [

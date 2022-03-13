@@ -1,5 +1,7 @@
-// Navegation used for keeping the SPA
+import { Coordinates } from "./pages/coordinates"
+import { Welcome } from "./pages/welcome"
 
+// Navegation used for keeping the SPA
 function navThroughAjax(hash: string) {
     if (!hash) return
 
@@ -33,7 +35,25 @@ function initialNav() {
     }
 }
 
-window.onhashchange = (event: any) => navThroughAjax(location.hash)
+function route() {
+    const currentPage = location.hash.split("/").at(location.hash.split("/").length - 1)
+    switch(currentPage) {
+        case "welcome.html":
+            new Welcome().run()
+            break
+        case "coordinates.html":
+            new Coordinates().run()
+            break
+        default:
+            console.warn(`Current page (${currentPage}) is not routed to its main function.`)
+    }
+}
+
+window.onhashchange = (event: any) => {
+    console.log("caiu aqui")
+    navThroughAjax(location.hash)
+    //route()
+}
 
 configLinks()
 initialNav()

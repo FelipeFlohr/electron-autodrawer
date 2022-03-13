@@ -7,8 +7,12 @@ const merge = require("merge-stream")
 const concat = require("gulp-concat")
 const sass = require("gulp-sass")(require("sass"))
 const uglifycss = require("gulp-uglifycss")
-const purgecss = require("gulp-purgecss")
+const glob = require("glob")
+const browserify = require("browserify")
+const tsify = require("tsify")
 const { extensions } = require("./extensions.json")
+const source = require("vinyl-source-stream")
+const streamify = require("gulp-streamify")
 
 function processTS(callback) {
     return gulp.src(["src/**/*.ts", "!src/view/**/*.ts"])
@@ -32,14 +36,14 @@ function processFrontendScripts(callback) {
     const ts = processFrontendTS()
 
     return merge(js, ts)
-        .pipe(babel({
+        .pipe(streamify(babel({
             comments: false,
             presets: ["@babel/preset-env"]
-        }))
-        .pipe(uglify({
+        })))
+        .pipe(streamify(uglify({
             compress: true
-        }))
-        .pipe(concat("app.min.js"))
+        })))
+        .pipe(streamify(concat("app.min.js")))
         .pipe(gulp.dest("dist/view/assets/js"))
 }
 
@@ -50,9 +54,6 @@ function processFrontendSASS(callback) {
         .pipe(sass())
         .pipe(uglifycss({ "uglyComments": true }))
         .pipe(concat("app.min.css"))
-        // .pipe(purgecss({
-        //     content: ["src/view/**/*.html"]
-        // }))
         .pipe(gulp.dest("dist/view/assets/css"))
 }
 
@@ -94,12 +95,18 @@ module.exports = {
     processOtherFiles
 }
 
-// Process to merge
+// Processes to merge
 function processFrontendTS() {
-    return gulp.src("src/view/**/*.ts")
-        .pipe(ts())
+    const entryFiles = glob.sync("src/view/assets/ts/**/*.ts")
+    return browserify({
+        debug: true,
+        entries: entryFiles
+    })
+        .plugin(tsify)
+        .bundle()
+        .pipe(source("app.min.js"))
 }
 
 function processFrontendJS() {
-    return gulp.src(["src/view/**/*.js", "node_modules/bootstrap/dist/js/bootstrap.js"])
+    return gulp.src(["src/view/assets/**/*.js", "node_modules/bootstrap/dist/js/bootstrap.js"])
 }
