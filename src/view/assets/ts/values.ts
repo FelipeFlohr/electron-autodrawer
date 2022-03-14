@@ -1,6 +1,6 @@
 import { Point } from "../../../types/point"
 
-class Values {
+class PositionValues {
 
     private _toolMarker?: Point = null
     private _toolWatercolor?: Point = null
@@ -18,6 +18,20 @@ class Values {
     private _canvasTopLeftCorner?: Point = null
     private _canvasBottomRightCorner?: Point = null
     private _contextRedefineCanvas?: Point = null
+
+    public isAllCoordsValid(): boolean {
+        let valid = true
+
+        for (let key in this) {
+            if (typeof(this[key]) == "object") {
+                if (this[key] == null) {
+                    valid = false
+                }
+            }
+        }
+
+        return valid
+    }
 
     private validator(point: Point): Point {
         const width = window.screen.width
@@ -156,4 +170,4 @@ class Values {
     }
 }
 
-export const values = new Values()
+export const positionValues = new PositionValues()

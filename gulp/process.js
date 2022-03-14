@@ -100,7 +100,8 @@ function processFrontendTS() {
     const entryFiles = glob.sync("src/view/assets/ts/**/*.ts")
     return browserify({
         debug: true,
-        entries: entryFiles
+        entries: entryFiles,
+        
     })
         .plugin(tsify)
         .bundle()

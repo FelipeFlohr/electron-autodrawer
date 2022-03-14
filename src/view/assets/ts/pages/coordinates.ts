@@ -1,6 +1,7 @@
 import { Point } from "../../../../types/point";
 import { Page } from "../models/page";
-import { values } from "../values";
+import { positionValues } from "../values";
+import defaultPositions from "../../../../json/defaultpositions.json"
 
 export class Coordinates extends Page {
 
@@ -12,6 +13,27 @@ export class Coordinates extends Page {
         this.setListeners()
     }
 
+    public async loadDefaultValues(): Promise<void> {
+        const inputDivs = await this.waitForElements("div [coordinateDiv]")
+
+        inputDivs.forEach(async element => {
+            if (element instanceof Element) {
+                const svgPlace = await this.waitForElement("span[svg-working]", element)
+                const xInput = await this.waitForElement(`input[placeholder^="x"]`, element)
+                const yInput = await this.waitForElement(`input[placeholder^="y"]`, element)
+                const id = element.id
+
+                xInput.setAttribute("value", defaultPositions[id].x)
+                xInput["value"] = defaultPositions[id].x
+
+                yInput.setAttribute("value", defaultPositions[id].y)
+                yInput["value"] = defaultPositions[id].y
+
+                await this.setSvg(svgPlace, xInput, yInput, id)
+            }
+        })
+    }
+
     private async setSvgs(): Promise<void> {
         const inputDivs = await this.waitForElements("div [coordinateDiv]")
 
@@ -20,13 +42,31 @@ export class Coordinates extends Page {
                 const id: string = element["id"]
                 const svgPlace: Element = await this.waitForElement("span[svg-working]", element)
 
-                if (values[id] != null) {
+                if (positionValues[id] != null) {
                     svgPlace.innerHTML = this.yesMarkerHtml
                 } else {
                     svgPlace.innerHTML = this.noMarkerHtml
                 }
             }
         })
+    }
+
+    private async setSvg(svgPlace: Element, xInput: Element, yInput: Element, id: string): Promise<void> {
+        if (parseInt(xInput["value"]) == NaN && parseInt(yInput["value"]) == NaN) {
+            svgPlace.innerHTML = this.noMarkerHtml
+        } else {
+            const xValue = xInput["value"]
+            const yValue = yInput["value"]
+
+            const point: Point = { x: parseInt(xValue), y: parseInt(yValue) }
+            positionValues[id] = point
+
+            if (positionValues[id] == null) {
+                svgPlace.innerHTML = this.noMarkerHtml
+            } else {
+                svgPlace.innerHTML = this.yesMarkerHtml
+            }
+        }
     }
 
     private async setListeners(): Promise<void> {
@@ -52,9 +92,9 @@ export class Coordinates extends Page {
                         svgPlace.innerHTML = this.noMarkerHtml
                     } else {
                         const point: Point = { x: parseInt(xValue), y: parseInt(yValue) }
-                        values[id] = point
+                        positionValues[id] = point
 
-                        if (values[id] == null) {
+                        if (positionValues[id] == null) {
                             svgPlace.innerHTML = this.noMarkerHtml
                         } else {
                             svgPlace.innerHTML = this.yesMarkerHtml
