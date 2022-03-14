@@ -8,6 +8,7 @@
         "baseUrl": ".",
         "watch": true,
         "resolveJsonModule": true,
+        "downlevelIteration": true,
         "rootDir": "src"
     },
     "include": [

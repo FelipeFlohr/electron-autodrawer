@@ -101,7 +101,6 @@ function processFrontendTS() {
     return browserify({
         debug: true,
         entries: entryFiles,
-        
     })
         .plugin(tsify)
         .bundle()

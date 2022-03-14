@@ -79,6 +79,12 @@ export class Coordinates extends Page {
                 const xInput = await this.waitForElement(`input[placeholder^="x"]`, element)
                 const yInput = await this.waitForElement(`input[placeholder^="y"]`, element)
                 const id = element.id
+                const isNumeric = (value: string) => {
+                    const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+                    const valueSpread = [...value]
+                    return valueSpread.every(e => numbers.includes(e))
+                }
+
                 const listenerForInputs = async (e: Event) => {
                     let xValue: string
                     let yValue: string
@@ -88,13 +94,13 @@ export class Coordinates extends Page {
                         yValue = e.currentTarget.parentElement.querySelector(`input[placeholder^="y"]`)["value"].trim()
                     }
 
-                    if (parseInt(xValue) == NaN || parseInt(yValue) == NaN) {
+                    if (parseInt(xValue) == NaN || parseInt(yValue) == NaN || !isNumeric(xValue) || !isNumeric(yValue)) {
                         svgPlace.innerHTML = this.noMarkerHtml
                     } else {
                         const point: Point = { x: parseInt(xValue), y: parseInt(yValue) }
                         positionValues[id] = point
 
-                        if (positionValues[id] == null) {
+                        if (positionValues[id] == null || !positionValues[id].x || !positionValues[id].y) {
                             svgPlace.innerHTML = this.noMarkerHtml
                         } else {
                             svgPlace.innerHTML = this.yesMarkerHtml
