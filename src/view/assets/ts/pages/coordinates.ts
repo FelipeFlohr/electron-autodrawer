@@ -2,6 +2,7 @@ import { Point } from "../../../../types/point";
 import { Page } from "../models/page";
 import { positionValues } from "../values";
 import defaultPositions from "../../../../json/defaultpositions.json"
+import { Positions } from "../../../../types/positions";
 
 export class Coordinates extends Page {
 
@@ -11,6 +12,7 @@ export class Coordinates extends Page {
     public run(): void {
         this.setSvgs()
         this.setListeners()
+        this.loadValues()
     }
 
     public async loadDefaultValues(): Promise<void> {
@@ -32,6 +34,78 @@ export class Coordinates extends Page {
                 await this.setSvg(svgPlace, xInput, yInput, id)
             }
         })
+    }
+
+    public async loadValuesButton() {
+        const inputFile = document.createElement("input")
+        inputFile.type = "file"
+        inputFile.accept = "application/json"
+        inputFile.multiple = false
+
+        const inputAlert = await this.waitForElement("#fileAlertPlaceholder")
+        const alert = (message: string, type: bootstrapAlerts) => {
+            inputAlert.innerHTML = ""
+
+            const wrapper = document.createElement("div")
+            wrapper.innerHTML = `<div class="alert ${type} alert-dismissible" role="alert">${message}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+
+            inputAlert.append(wrapper)
+        }
+
+        inputFile.addEventListener("change", e => {
+            const fileNotParsed = inputFile.files[0]
+            fileNotParsed.text()
+                .then(text => {
+                    const positions: Positions = JSON.parse(text)
+                    const replaceAt = (string: string, value: string, index: number) => {
+                        if (index > string.length -1) return string
+                        return string.substring(0, index) + value + string.substring(index + 1)
+                    }
+
+                    let allValidKeys = true
+                    for (let key in positionValues) {
+                        if (key.startsWith("_")) key = replaceAt(key, "", 0)
+                        if (typeof(positionValues[key]) === "object" && positions[key] === undefined) {
+                            allValidKeys = false
+                            alert(`Property ${key} is missing on the JSON file.`, bootstrapAlerts.DANGER)
+                        }
+                    }
+
+                    if (allValidKeys) {
+                        alert("File loaded.", bootstrapAlerts.SUCCESS)
+
+                        for (let key in positions) {
+                            positionValues[key] = positions[key]
+                        }
+                    }
+
+                    this.loadValues()
+                })
+                .catch(err => {
+                    alert("An error occurred. Did you load a file that is not a JSON?. Error: " + err, bootstrapAlerts.DANGER)
+                })
+        })
+
+        inputFile.click()
+    }
+
+    private async loadValues() {
+        const inputDivs = await this.waitForElements("div [coordinateDiv]")
+
+        inputDivs.forEach(async element => {
+            if (element instanceof Element) {
+                const id: string = element.id
+                const svgPlace = await this.waitForElement("span[svg-working]", element)
+                const xInput = await this.waitForElement(`input[placeholder^="x"]`, element)
+                const yInput = await this.waitForElement(`input[placeholder^="y"]`, element)
+                const point: Point = positionValues[id]
+
+                xInput["value"] = `${point.x}`
+                yInput["value"] = `${point.y}`
+            }
+        })
+
+        await this.setSvgs()
     }
 
     private async setSvgs(): Promise<void> {
@@ -113,4 +187,9 @@ export class Coordinates extends Page {
             }
         })
     }
+}
+
+enum bootstrapAlerts {
+    SUCCESS = "alert-success",
+    DANGER = "alert-danger"
 }

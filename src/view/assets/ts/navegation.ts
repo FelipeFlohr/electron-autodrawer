@@ -63,9 +63,6 @@ window.onhashchange = (event: any) => {
 configLinks()
 initialNav()
 
-// Externalizing classes functions
-function loadDefaultPositionValues() {
-    coordinates.loadDefaultValues()
-}
-
-global.loadDefaultPositionValues = loadDefaultPositionValues
+// Externalizing classes function to the DOM
+global.loadDefaultPositionValues = () => coordinates.loadDefaultValues()
+global.loadPositionValues = () => coordinates.loadValuesButton()

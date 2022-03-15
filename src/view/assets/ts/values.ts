@@ -34,6 +34,8 @@ class PositionValues {
     }
 
     private validator(point: Point): Point {
+        if (typeof(point.x) != "number" || typeof(point.y) != "number") return null
+
         const width = window.screen.width
         const height = window.screen.height
         const valid = point.x >= 0 && point.y >= 0 && point.x < width && point.y < height
