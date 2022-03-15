@@ -1,3 +1,4 @@
+import { Positions } from "../../../types/positions"
 import { Point } from "../../../types/point"
 
 class PositionValues {
@@ -31,6 +32,27 @@ class PositionValues {
         }
 
         return valid
+    }
+
+    public getPositions(): Positions {
+        return {
+            toolMarker: this.toolMarker,
+            toolWatercolor: this.toolWatercolor,
+            toolPixelPencil: this.toolPixelPencil,
+            toolGraphitePencil: this.toolGraphitePencil,
+            toolCrayon: this.toolCrayon,
+            boxBrushSize: this.boxBrushSize,
+            boxBrushOpacity: this.boxBrushOpacity,
+            boxZoom: this.boxZoom,
+            buttonSelectedColorPreview: this.buttonSelectedColorPreview,
+            selectColorRed: this.selectColorRed,
+            selectColorGreen: this.selectColorGreen,
+            selectColorBlue: this.selectColorBlue,
+            selectColorOkButton: this.selectColorOkButton,
+            canvasTopLeftCorner: this.canvasTopLeftCorner,
+            canvasBottomRightCorner: this.canvasBottomRightCorner,
+            contextRedefineCanvas: this.contextRedefineCanvas
+        }
     }
 
     private validator(point: Point): Point {

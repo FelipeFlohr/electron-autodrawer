@@ -89,19 +89,26 @@ export class Coordinates extends Page {
         inputFile.click()
     }
 
+    public saveValuesButton() {
+        const a = document.createElement("a")
+        a.href = window.URL.createObjectURL(new Blob([JSON.stringify(positionValues.getPositions())], { type: "application/json" }))
+        a.download = "positions.json"
+
+        a.click()
+    }
+
     private async loadValues() {
         const inputDivs = await this.waitForElements("div [coordinateDiv]")
 
         inputDivs.forEach(async element => {
             if (element instanceof Element) {
                 const id: string = element.id
-                const svgPlace = await this.waitForElement("span[svg-working]", element)
                 const xInput = await this.waitForElement(`input[placeholder^="x"]`, element)
                 const yInput = await this.waitForElement(`input[placeholder^="y"]`, element)
                 const point: Point = positionValues[id]
 
-                xInput["value"] = `${point.x}`
-                yInput["value"] = `${point.y}`
+                xInput["value"] = point == null ? "" : `${point.x}`
+                yInput["value"] = point == null ? "" : `${point.y}`
             }
         })
 

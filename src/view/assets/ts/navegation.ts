@@ -66,3 +66,4 @@ initialNav()
 // Externalizing classes function to the DOM
 global.loadDefaultPositionValues = () => coordinates.loadDefaultValues()
 global.loadPositionValues = () => coordinates.loadValuesButton()
+global.savePositionValues = () => coordinates.saveValuesButton()
