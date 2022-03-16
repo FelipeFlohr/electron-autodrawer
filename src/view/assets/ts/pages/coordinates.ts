@@ -1,8 +1,10 @@
 import { Point } from "../../../../types/point";
 import { Page } from "../models/page";
-import { positionValues } from "../values";
 import defaultPositions from "../../../../json/defaultpositions.json"
 import { Positions } from "../../../../types/positions";
+import { Settings } from "../settings";
+
+const positionValues = Settings.getInstance().positions
 
 export class Coordinates extends Page {
 
@@ -82,7 +84,8 @@ export class Coordinates extends Page {
                     this.loadValues()
                 })
                 .catch(err => {
-                    alert("An error occurred. Did you load a file that is not a JSON?. Error: " + err, bootstrapAlerts.DANGER)
+                    alert("An error occurred while loading the file. Is there any null value in the file?", bootstrapAlerts.DANGER)
+                    console.error("Error while loading file.\nError: " + err)
                 })
         })
 

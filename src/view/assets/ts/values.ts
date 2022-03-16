@@ -1,7 +1,7 @@
 import { Positions } from "../../../types/positions"
 import { Point } from "../../../types/point"
 
-class PositionValues {
+export class PositionValues {
 
     private _toolMarker?: Point = null
     private _toolWatercolor?: Point = null

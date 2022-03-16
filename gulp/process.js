@@ -63,19 +63,6 @@ function processFrontendHTML(callback) {
         .pipe(gulp.dest("dist/view"))
 }
 
-function processBootstrapJS(callback) {
-    return gulp.src("node_modules/bootstrap/dist/js/bootstrap.js")
-        .pipe(babel({
-            comments: false,
-            presets: ["@babel/preset-env"]
-        }))
-        .pipe(uglify({
-            compress: true
-        }))
-        .pipe(concat("app.min.js"))
-        .pipe(gulp.dest("dist/view/assets/js"))
-}
-
 function processOtherFiles(callback) {
     const extensionsPath = []
     extensions.forEach(extension => {
@@ -91,7 +78,6 @@ module.exports = {
     processFrontendScripts,
     processFrontendSASS,
     processFrontendHTML,
-    processBootstrapJS,
     processOtherFiles
 }
 
