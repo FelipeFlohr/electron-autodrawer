@@ -2,6 +2,17 @@ html {
     height: 100vh;
 }
 
+// Light and Dark Mode
+.light-mode {
+    background-color: $light;
+    color: $dark;
+}
+
+.dark-mode {
+    background-color: $dark;
+    color: $light;
+}
+
 // Animation classes
 .fadein-text {
     animation-name: fadein-text;
