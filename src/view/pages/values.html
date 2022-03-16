@@ -1,0 +1,75 @@
+<div class="d-flex flex-column flex-grow-1 fadein-text duration-1s">
+    <header>
+        <h1>Values</h1>
+        <h5 class="fst-italic">
+            The Autodrawer will use these values to set up Paint 3D's tools.
+        </h5>
+    </header>
+
+    <div class="container mt-6">
+        <div class="row">
+            <div class="col">
+                <!-- Values -->
+                <div class="container">
+                    <div class="row mb-1" valuesDiv id="zoom">
+                        <div class="col pt-4">
+                            <span class="mt-2 ml-2">Zoom:</span>
+                        </div>
+                        <div class="col">
+                            <label for="zoomAmountRange" class="form-label">Zoom amount: <span
+                                    id="zoomAmountSpan"></span></label>
+                            <input type="range" class="form-range" min="0" max="100" id="zoomAmountRange">
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row mb-1" valuesDiv id="brushSize">
+                        <div class="col pt-4">
+                            <span class="mt-2 ml-2">Brush size:</span>
+                        </div>
+                        <div class="col">
+                            <label for="brushSizeRange" class="form-label">Brush size: <span
+                                    id="brushSizeSpan"></span>px</label>
+                            <input type="range" class="form-range" min="0" max="10" id="brushSizeRange">
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row mb-1" valuesDiv id="brushOpacity">
+                        <div class="col pt-4">
+                            <span class="mt-2 ml-2">Brush opacity:</span>
+                        </div>
+                        <div class="col">
+                            <label for="brushOpacityRange" class="form-label">Brush opacity: <span
+                                    id="brushOpacitySpan"></span>%</label>
+                            <input type="range" class="form-range" min="0" max="100" id="brushOpacityRange">
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row mb-1" valuesDiv id="tool">
+                        <div class="col pt-1">
+                            <span class="mt-2 ml-2">Tool:</span>
+                        </div>
+                        <div class="col">
+                            <div class="dropdown">
+                                <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span id="toolSelected"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <li><a class="dropdown-item">Marker</a></li>
+                                    <li><a class="dropdown-item">Watercolor</a></li>
+                                    <li><a class="dropdown-item">Pixel Pencil</a></li>
+                                    <li><a class="dropdown-item">Graphite Pencil</a></li>
+                                    <li><a class="dropdown-item">Crayon</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

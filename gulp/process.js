@@ -94,5 +94,5 @@ function processFrontendTS() {
 }
 
 function processFrontendJS() {
-    return gulp.src(["src/view/assets/**/*.js", "node_modules/bootstrap/dist/js/bootstrap.js"])
+    return gulp.src(["src/view/assets/**/*.js", "node_modules/bootstrap/dist/js/bootstrap.bundle.js"])
 }
