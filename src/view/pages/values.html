@@ -6,6 +6,26 @@
         </h5>
     </header>
 
+    <!-- Modal -->
+    <div class="modal fade" id="loadValuesModal" tabindex="-1" aria-labelledby="loadValuesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-gray700">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loadValuesModalLabel">Load default values?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Default values are based on a 1920x1080 resolution and a 4000x3000 canvas. It might not be compatible if your resolution is different.
+                    If you load default values, <span class="fw-bold">every data will be overwritten.</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Load default values (OVERWRITE DATA)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container mt-6">
         <div class="row">
             <div class="col">
@@ -16,9 +36,8 @@
                             <span class="mt-2 ml-2">Zoom:</span>
                         </div>
                         <div class="col">
-                            <label for="zoomAmountRange" class="form-label">Zoom amount: <span
-                                    id="zoomAmountSpan"></span></label>
-                            <input type="range" class="form-range" min="0" max="100" id="zoomAmountRange">
+                            <label for="zoomAmountRange" class="form-label">Zoom amount: <span id="zoomAmountSpan"></span>%</label>
+                            <input type="range" class="form-range" min="1" max="100" id="zoomAmountRange">
                         </div>
                     </div>
                 </div>
@@ -30,7 +49,7 @@
                         <div class="col">
                             <label for="brushSizeRange" class="form-label">Brush size: <span
                                     id="brushSizeSpan"></span>px</label>
-                            <input type="range" class="form-range" min="0" max="10" id="brushSizeRange">
+                            <input type="range" class="form-range" min="1" max="10" id="brushSizeRange">
                         </div>
                     </div>
                 </div>
@@ -42,7 +61,7 @@
                         <div class="col">
                             <label for="brushOpacityRange" class="form-label">Brush opacity: <span
                                     id="brushOpacitySpan"></span>%</label>
-                            <input type="range" class="form-range" min="0" max="100" id="brushOpacityRange">
+                            <input type="range" class="form-range" min="1" max="100" id="brushOpacityRange">
                         </div>
                     </div>
                 </div>
@@ -69,6 +88,12 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div id="fileAlertPlaceholder"></div>
+            <div class="d-flex gap-5px mt-3">
+                <button class="btn btn-secondary mr-2 mb-4" type="button" data-bs-toggle="modal" data-bs-target="#loadValuesModal">Load default values</button>
+                <button class="btn btn-primary mr-2 mb-4" load-coordvalues type="button"">Load values</button>
+                <button class="btn btn-success mr-2 mb-4" type="button"">Save values</button>
             </div>
         </div>
     </div>
