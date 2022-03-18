@@ -1,4 +1,4 @@
-import { Tool, ToolMinBrushSizeValue, ToolMaxBrushSizeValue } from "../../../types/values"
+import { Tool, ToolMinBrushSizeValue, ToolMaxBrushSizeValue, Values } from "../../../types/values"
 
 export class ToolsValues {
 
@@ -6,6 +6,20 @@ export class ToolsValues {
     private _brushSize: number = 1
     private _brushOpacity: number = 100
     private _tool: Tool = Tool.PIXEL_PENCIL
+
+    public getValues(): Values {
+        return {
+            zoom: this._zoom,
+            brushOpacity: this._brushOpacity,
+            brushSize: this._brushSize,
+            tool: this._tool
+        }
+    }
+
+    public validateBrushSize(): void {
+        const currentTool = Object.keys(Tool)[Object.values(Tool).indexOf(this.tool)]
+        this.brushSize = this.brushSizeValidator(this._brushSize) ? this._brushSize : ToolMinBrushSizeValue[currentTool]
+    }
 
     private zoomAndOpacityValidator(value: number): boolean {
         if (value == null) return false
@@ -41,7 +55,7 @@ export class ToolsValues {
     }
 
     set brushSize(value: number) {
-        this._brushSize = this.brushSizeValidator(value) ? parseInt(`${value}`) : ToolMinBrushSizeValue[this._tool]
+        this._brushSize = this.brushSizeValidator(value) ? parseInt(`${value}`) : ToolMinBrushSizeValue[Object.keys(Tool)[Object.values(Tool).indexOf(this.tool)]]
     }
 
     get brushOpacity(): number {

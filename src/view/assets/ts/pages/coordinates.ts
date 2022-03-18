@@ -59,15 +59,11 @@ export class Coordinates extends Page {
             fileNotParsed.text()
                 .then(text => {
                     const positions: Positions = JSON.parse(text)
-                    const replaceAt = (string: string, value: string, index: number) => {
-                        if (index > string.length -1) return string
-                        return string.substring(0, index) + value + string.substring(index + 1)
-                    }
 
                     let allValidKeys = true
                     for (let key in positionValues) {
-                        if (key.startsWith("_")) key = replaceAt(key, "", 0)
-                        if (typeof(positionValues[key]) === "object" && positions[key] === undefined) {
+                        if (key.startsWith("_")) key = this.replaceAt(key, "", 0)
+                        if (typeof(positionValues[key]) === "object" && positions[key] == undefined) {
                             allValidKeys = false
                             alert(`Property ${key} is missing on the JSON file.`, bootstrapAlerts.DANGER)
                         }
@@ -199,7 +195,7 @@ export class Coordinates extends Page {
     }
 }
 
-enum bootstrapAlerts {
+export enum bootstrapAlerts {
     SUCCESS = "alert-success",
     DANGER = "alert-danger"
 }

@@ -1,9 +1,11 @@
 import { Coordinates } from "./pages/coordinates"
+import { ToolsValues } from "./pages/values"
 import { Welcome } from "./pages/welcome"
 
-// Classes variables. Used to externalize some functions
+// Global classes variables
 var welcome: Welcome
 var coordinates: Coordinates
+var values: ToolsValues
 
 // Navegation used for keeping the SPA
 function navThroughAjax(hash: string) {
@@ -50,6 +52,10 @@ function route() {
             coordinates = new Coordinates()
             coordinates.run()
             break
+        case "values.html":
+            values = new ToolsValues()
+            values.run()
+            break
         default:
             console.warn(`Current page (${currentPage}) is not routed to its main function.`)
     }
@@ -67,3 +73,7 @@ initialNav()
 global.loadDefaultPositionValues = () => coordinates.loadDefaultValues()
 global.loadPositionValues = () => coordinates.loadValuesButton()
 global.savePositionValues = () => coordinates.saveValuesButton()
+global.loadDefaultToolsValues = () => values.loadDefaultValues()
+global.changeTool = (tool: string) => values.changeTool(tool)
+global.loadToolsValues = () => values.loadValuesButton()
+global.saveToolsValues = () => values.saveValuesButton()

@@ -20,7 +20,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Load default values (OVERWRITE DATA)</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="loadDefaultToolsValues()">Load default values (OVERWRITE DATA)</button>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
                         </div>
                         <div class="col">
                             <label for="zoomAmountRange" class="form-label">Zoom amount: <span id="zoomAmountSpan"></span>%</label>
-                            <input type="range" class="form-range" min="1" max="100" id="zoomAmountRange">
+                            <input type="range" class="form-range" min="1" max="100" id="zoomAmountRange" valueRange>
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                         <div class="col">
                             <label for="brushSizeRange" class="form-label">Brush size: <span
                                     id="brushSizeSpan"></span>px</label>
-                            <input type="range" class="form-range" min="1" max="10" id="brushSizeRange">
+                            <input type="range" class="form-range" min="1" max="10" id="brushSizeRange" valueRange>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                         <div class="col">
                             <label for="brushOpacityRange" class="form-label">Brush opacity: <span
                                     id="brushOpacitySpan"></span>%</label>
-                            <input type="range" class="form-range" min="1" max="100" id="brushOpacityRange">
+                            <input type="range" class="form-range" min="1" max="100" id="brushOpacityRange" valueRange>
                         </div>
                     </div>
                 </div>
@@ -78,22 +78,22 @@
                                 </a>
 
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li><a class="dropdown-item">Marker</a></li>
-                                    <li><a class="dropdown-item">Watercolor</a></li>
-                                    <li><a class="dropdown-item">Pixel Pencil</a></li>
-                                    <li><a class="dropdown-item">Graphite Pencil</a></li>
-                                    <li><a class="dropdown-item">Crayon</a></li>
+                                    <li><a class="dropdown-item" onclick="changeTool('marker')">Marker</a></li>
+                                    <li><a class="dropdown-item" onclick="changeTool('watercolor')">Watercolor</a></li>
+                                    <li><a class="dropdown-item" onclick="changeTool('pixelPencil')">Pixel Pencil</a></li>
+                                    <li><a class="dropdown-item" onclick="changeTool('graphitePencil')">Graphite Pencil</a></li>
+                                    <li><a class="dropdown-item" onclick="changeTool('crayon')">Crayon</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="fileAlertPlaceholder"></div>
+            <div class="mt-4" id="fileAlertPlaceholder"></div>
             <div class="d-flex gap-5px mt-3">
                 <button class="btn btn-secondary mr-2 mb-4" type="button" data-bs-toggle="modal" data-bs-target="#loadValuesModal">Load default values</button>
-                <button class="btn btn-primary mr-2 mb-4" load-coordvalues type="button"">Load values</button>
-                <button class="btn btn-success mr-2 mb-4" type="button"">Save values</button>
+                <button class="btn btn-primary mr-2 mb-4" load-coordvalues type="button" onclick="loadToolsValues()">Load values</button>
+                <button class="btn btn-success mr-2 mb-4" type="button" onclick="saveToolsValues()">Save values</button>
             </div>
         </div>
     </div>

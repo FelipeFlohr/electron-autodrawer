@@ -40,5 +40,10 @@ export abstract class Page {
         })
     }
 
+    protected replaceAt(string: string, value: string, index: number) {
+        if (index > string.length -1) return string
+        return string.substring(0, index) + value + string.substring(index + 1)
+    }
+
     abstract run(): void;
 }
