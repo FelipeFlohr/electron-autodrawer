@@ -2,7 +2,7 @@ import { Page } from "../models/page";
 import { Settings } from "../settings";
 
 export class Welcome extends Page {
-    public run(): void {
+    public run() {
         const positions = Settings.getInstance().positions
         const values = Settings.getInstance().values
         this.updateStatus(positions.isAllCoordsValid(), values.isAllValuesValid())

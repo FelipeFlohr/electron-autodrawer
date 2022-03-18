@@ -1,11 +1,15 @@
 import { Coordinates } from "./pages/coordinates"
 import { ToolsValues } from "./pages/values"
 import { Welcome } from "./pages/welcome"
+import { Settings } from "./settings"
 
 // Global classes variables
 var welcome: Welcome
 var coordinates: Coordinates
 var values: ToolsValues
+
+// Creates the instance
+Settings.getInstance()
 
 // Navegation used for keeping the SPA
 function navThroughAjax(hash: string) {
@@ -36,13 +40,16 @@ function initialNav() {
     if (location.hash) {
         navThroughAjax(location.hash)
     } else {
-        const firstLink = document.querySelector("[rPage]")
-        navThroughAjax(firstLink.getAttribute("rPage"))
+        const aWelcomePage = document.querySelector(`a[rPage$="welcome.html"]`)
+        if (aWelcomePage instanceof HTMLElement) aWelcomePage.click()
     }
 }
 
 function route() {
-    const currentPage = location.hash.split("/").at(location.hash.split("/").length - 1)
+    const locationHash: string = location.hash
+    const hashSplit: string[] = locationHash.split("/")
+
+    const currentPage = hashSplit[hashSplit.length - 1]
     switch(currentPage) {
         case "welcome.html":
             welcome = new Welcome()
@@ -69,7 +76,7 @@ window.onhashchange = (event: any) => {
 configLinks()
 initialNav()
 
-// Externalizing classes function to the DOM
+// Externalizing classes functions to the DOM
 global.loadDefaultPositionValues = () => coordinates.loadDefaultValues()
 global.loadPositionValues = () => coordinates.loadValuesButton()
 global.savePositionValues = () => coordinates.saveValuesButton()
