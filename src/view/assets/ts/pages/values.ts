@@ -134,6 +134,7 @@ export class ToolsValues extends Page {
                     this.waitForElement("span", parentElement)
                         .then(element => {
                             element.innerHTML = `${e.currentTarget["value"]}`
+                            this.getInstance()[parentElement.parentElement.id] = parseInt(`${e.currentTarget["value"]}`)
                         })
                 }
             })
