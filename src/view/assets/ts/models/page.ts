@@ -6,7 +6,7 @@ export abstract class Page {
                 return resolve(baseElement.querySelector(selector))
             }
 
-            const observer = new MutationObserver(mutations => {
+            const observer = new MutationObserver(() => {
                 if (baseElement.querySelector(selector)) {
                     resolve(baseElement.querySelector(selector))
                     observer.disconnect()
@@ -26,7 +26,7 @@ export abstract class Page {
                 return resolve(baseElement.querySelectorAll(selector))
             }
 
-            const observer = new MutationObserver(mutations => {
+            const observer = new MutationObserver(() => {
                 if (baseElement.querySelectorAll(selector).length > 0) {
                     resolve(baseElement.querySelectorAll(selector))
                     observer.disconnect()

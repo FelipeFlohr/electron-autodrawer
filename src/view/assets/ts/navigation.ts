@@ -4,14 +4,14 @@ import { Welcome } from "./pages/welcome"
 import { Settings } from "./settings"
 
 // Global classes variables
-var welcome: Welcome
-var coordinates: Coordinates
-var values: ToolsValues
+let welcome: Welcome;
+let coordinates: Coordinates;
+let values: ToolsValues;
 
 // Creates the instance
 Settings.getInstance()
 
-// Navegation used for keeping the SPA
+// Navigation used for keeping the SPA
 function navThroughAjax(hash: string) {
     if (!hash) return
 
@@ -68,7 +68,7 @@ function route() {
     }
 }
 
-window.onhashchange = (event: any) => {
+window.onhashchange = () => {
     navThroughAjax(location.hash)
     route()
 }

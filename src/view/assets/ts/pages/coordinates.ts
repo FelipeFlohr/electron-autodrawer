@@ -1,8 +1,8 @@
-import { Point } from "../../../../types/point";
-import { Page } from "../models/page";
+import {Point} from "../../../../types/point";
+import {Page} from "../models/page";
 import defaultPositions from "../../../../json/defaultpositions.json"
-import { Positions } from "../../../../types/positions";
-import { Settings } from "../settings";
+import {Positions} from "../../../../types/positions";
+import {Settings} from "../settings";
 
 const positionValues = Settings.getInstance().positions
 
@@ -54,7 +54,7 @@ export class Coordinates extends Page {
             inputAlert.append(wrapper)
         }
 
-        inputFile.addEventListener("change", e => {
+        inputFile.addEventListener("change", () => {
             const fileNotParsed = inputFile.files[0]
             fileNotParsed.text()
                 .then(text => {
@@ -138,8 +138,7 @@ export class Coordinates extends Page {
             const xValue = xInput["value"]
             const yValue = yInput["value"]
 
-            const point: Point = { x: parseInt(xValue), y: parseInt(yValue) }
-            positionValues[id] = point
+            positionValues[id] = {x: parseInt(xValue), y: parseInt(yValue)}
 
             if (positionValues[id] == null) {
                 svgPlace.innerHTML = this.noMarkerHtml
@@ -177,8 +176,7 @@ export class Coordinates extends Page {
                     if (parseInt(xValue) == NaN || parseInt(yValue) == NaN || !isNumeric(xValue) || !isNumeric(yValue)) {
                         svgPlace.innerHTML = this.noMarkerHtml
                     } else {
-                        const point: Point = { x: parseInt(xValue), y: parseInt(yValue) }
-                        positionValues[id] = point
+                        positionValues[id] = {x: parseInt(xValue), y: parseInt(yValue)}
 
                         if (positionValues[id] == null || !positionValues[id].x || !positionValues[id].y) {
                             svgPlace.innerHTML = this.noMarkerHtml

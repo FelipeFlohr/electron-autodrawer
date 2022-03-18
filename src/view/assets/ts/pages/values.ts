@@ -22,7 +22,7 @@ export class ToolsValues extends Page {
         this.addRangeListeners()
     }
 
-    public async loadDefaultValues() {
+    public loadDefaultValues() {
         for (let key in defaultValues) {
             this.getInstance()[key] = defaultValues[key]
         }
@@ -46,7 +46,7 @@ export class ToolsValues extends Page {
             inputAlert.append(wrapper)
         }
 
-        inputFile.addEventListener("change", e => {
+        inputFile.addEventListener("change", () => {
             const fileNotParsed = inputFile.files[0]
             fileNotParsed.text()
                 .then(text => {
