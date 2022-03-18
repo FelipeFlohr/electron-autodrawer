@@ -21,6 +21,16 @@ export class ToolsValues {
         this.brushSize = this.brushSizeValidator(this._brushSize) ? this._brushSize : ToolMinBrushSizeValue[currentTool]
     }
 
+    public isAllValuesValid(): boolean {
+        let allValid = true
+        const attributes = [this.zoom, this.brushSize, this.brushOpacity, this.tool]
+        attributes.forEach(attribute => {
+            if (attribute == null) allValid = false
+        })
+
+        return allValid
+    }
+
     private zoomAndOpacityValidator(value: number): boolean {
         if (value == null) return false
         return value > 0 && value <= 100
