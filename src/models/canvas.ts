@@ -28,7 +28,7 @@ export class Canvas {
 
         this._canvasSize = {
             width: this._bottomRightCorner.x - this._topLeftCorner.x,
-            height: this._bottomRightCorner.y - this._topLeftCorner.x
+            height: this._bottomRightCorner.y - this._topLeftCorner.y
         }
 
         this._center = {

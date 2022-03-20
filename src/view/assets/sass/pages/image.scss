@@ -1,0 +1,38 @@
+img {
+    max-width: 50%;
+    border: 3px wheat solid;
+    border-radius: 10px;
+}
+
+.img-active {
+    animation-name: increase-maxwidth-img;
+    animation-duration: 0.5s;
+    max-width: 70%;
+}
+
+.img-deactive {
+    animation-name: decrease-maxwidth-img;
+    animation-duration: 0.5s;
+    max-width: 50%;
+}
+
+// Expand max width animation
+@keyframes increase-maxwidth-img {
+    0% {
+        max-width: 50%;
+    }
+
+    100% {
+        max-width: 70%;
+    }
+}
+
+@keyframes decrease-maxwidth-img {
+    0% {
+        max-width: 70%;
+    }
+
+    100% {
+        max-width: 50%;
+    }
+}

@@ -1,0 +1,17 @@
+<div class="d-flex flex-column flex-grow-1 fadein-text duration-1s">
+    <header>
+        <h1>Image</h1>
+        <h5 class="fst-italic">
+            Select the image to be drawn on the canvas.
+        </h5>
+    </header>
+
+    <section class="d-flex flex-column flex-grow-1 fadein-text duration-1s align-items-center justify-content-center">
+        <div id="input-form">
+            <label for="imageFile" class="form-label">Select an image...</label>
+            <input class="form-control" type="file" id="imageFile" accept=".jpg, .png, .bmp, .tiff" onchange="loadImage(this)">
+        </div>
+        <div class="d-flex flex-column align-items-center mt-3" id="imageStatus"></div>
+        <div class="d-flex flex-column align-items-center" id="imageLoaded"></div>
+    </section>
+</div>

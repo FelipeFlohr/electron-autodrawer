@@ -1,4 +1,4 @@
-import { Tool, ToolMinBrushSizeValue, ToolMaxBrushSizeValue, Values } from "../../../types/values"
+import { Tool, ToolMinBrushSizeValue, ToolMaxBrushSizeValue, Values } from "../../../../types/values"
 
 export class ToolsValues {
 

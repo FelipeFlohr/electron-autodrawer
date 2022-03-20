@@ -16,8 +16,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Default values are based on a 1920x1080 resolution and a 4000x3000 canvas. It might not be compatible if your resolution is different.
-                    If you load default values, <span class="fw-bold">every data will be overwritten.</span>
+                    Default values are based on a 1920x1080 resolution and a 4000x3000 canvas. It might not be
+                    compatible if your resolution is different. If you load default values, <span class="fw-bold">every data will be overwritten.</span>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -27,281 +27,251 @@
         </div>
     </div>
 
-    <div class="container mt-6">
-        <div class="row">
-            <div class="col col-xxl-10">
-                <!-- Coordinates -->
-                <div class="container">
-                    <div class="row mb-1" coordinateDiv id="toolMarker">
-                        <div class="col">
-                            <span class="mt-2 ml-2">Tool | Marker:</span>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
-                                    aria-label="X">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
-                                    aria-label="Y">
+    <section>
+        <div class="container mt-6">
+            <div class="row">
+                <div class="col col-xxl-10">
+                    <!-- Coordinates -->
+                    <div class="container">
+                        <div class="row mb-1" coordinateDiv id="toolMarker">
+                            <div class="col">
+                                <span class="mt-2 ml-2">Tool | Marker:</span>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="x" aria-label="X">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="y" aria-label="Y">
+                                </div>
+                            </div>
+                            <div class="col col-sm-1">
+                                <span svg-working></span>
                             </div>
                         </div>
-                        <div class="col col-sm-1">
-                            <span svg-working></span>
+                        <div class="row mb-1" coordinateDiv id="toolWatercolor">
+                            <div class="col">
+                                <span class="mt-2 ml-2">Tool | Watercolor:</span>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="x" aria-label="X">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="y" aria-label="Y">
+                                </div>
+                            </div>
+                            <div class="col col-sm-1">
+                                <span svg-working></span>
+                            </div>
+                        </div>
+                        <div class="row mb-1" coordinateDiv id="toolPixelPencil">
+                            <div class="col">
+                                <span class="mt-2 ml-2">Tool | Pixel Pencil:</span>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="x" aria-label="X">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="y" aria-label="Y">
+                                </div>
+                            </div>
+                            <div class="col col-sm-1">
+                                <span svg-working></span>
+                            </div>
+                        </div>
+                        <div class="row mb-1" coordinateDiv id="toolGraphitePencil">
+                            <div class="col">
+                                <span class="mt-2 ml-2">Tool | Graphite Pencil:</span>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="x" aria-label="X">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="y" aria-label="Y">
+                                </div>
+                            </div>
+                            <div class="col col-sm-1">
+                                <span svg-working></span>
+                            </div>
+                        </div>
+                        <div class="row mb-1" coordinateDiv id="toolCrayon">
+                            <div class="col">
+                                <span class="mt-2 ml-2">Tool | Crayon:</span>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="x" aria-label="X">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="y" aria-label="Y">
+                                </div>
+                            </div>
+                            <div class="col col-sm-1">
+                                <span svg-working></span>
+                            </div>
+                        </div>
+                        <div class="row mb-1" coordinateDiv id="boxBrushSize">
+                            <div class="col">
+                                <span class="mt-2 ml-2">Values | Brush Size:</span>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="x" aria-label="X">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="y" aria-label="Y">
+                                </div>
+                            </div>
+                            <div class="col col-sm-1">
+                                <span svg-working></span>
+                            </div>
+                        </div>
+                        <div class="row mb-1" coordinateDiv id="boxBrushOpacity">
+                            <div class="col">
+                                <span class="mt-2 ml-2">Values | Brush Opacity:</span>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="x" aria-label="X">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="y" aria-label="Y">
+                                </div>
+                            </div>
+                            <div class="col col-sm-1">
+                                <span svg-working></span>
+                            </div>
+                        </div>
+                        <div class="row mb-1" coordinateDiv id="boxZoom">
+                            <div class="col">
+                                <span class="mt-2 ml-2">Values | Zoom:</span>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="x" aria-label="X">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="y" aria-label="Y">
+                                </div>
+                            </div>
+                            <div class="col col-sm-1">
+                                <span svg-working></span>
+                            </div>
+                        </div>
+                        <div class="row mb-1" coordinateDiv id="buttonSelectedColorPreview">
+                            <div class="col">
+                                <span class="mt-2 ml-2">Button | Selected Color Preview:</span>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="x" aria-label="X">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="y" aria-label="Y">
+                                </div>
+                            </div>
+                            <div class="col col-sm-1">
+                                <span svg-working></span>
+                            </div>
+                        </div>
+                        <div class="row mb-1" coordinateDiv id="selectColorRed">
+                            <div class="col">
+                                <span class="mt-2 ml-2">Color Selector | Red:</span>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="x" aria-label="X">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="y" aria-label="Y">
+                                </div>
+                            </div>
+                            <div class="col col-sm-1">
+                                <span svg-working></span>
+                            </div>
+                        </div>
+                        <div class="row mb-1" coordinateDiv id="selectColorGreen">
+                            <div class="col">
+                                <span class="mt-2 ml-2">Color Selector | Green:</span>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="x" aria-label="X">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="y" aria-label="Y">
+                                </div>
+                            </div>
+                            <div class="col col-sm-1">
+                                <span svg-working></span>
+                            </div>
+                        </div>
+                        <div class="row mb-1" coordinateDiv id="selectColorBlue">
+                            <div class="col">
+                                <span class="mt-2 ml-2">Color Selector | Blue:</span>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="x" aria-label="X">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="y" aria-label="Y">
+                                </div>
+                            </div>
+                            <div class="col col-sm-1">
+                                <span svg-working></span>
+                            </div>
+                        </div>
+                        <div class="row mb-1" coordinateDiv id="selectColorOkButton">
+                            <div class="col">
+                                <span class="mt-2 ml-2">Color Selector | Ok Button:</span>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="x" aria-label="X">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="y" aria-label="Y">
+                                </div>
+                            </div>
+                            <div class="col col-sm-1">
+                                <span svg-working></span>
+                            </div>
+                        </div>
+                        <div class="row mb-1" coordinateDiv id="canvasTopLeftCorner">
+                            <div class="col">
+                                <span class="mt-2 ml-2">Canvas | Top Left Corner:</span>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="x" aria-label="X">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="y" aria-label="Y">
+                                </div>
+                            </div>
+                            <div class="col col-sm-1">
+                                <span svg-working></span>
+                            </div>
+                        </div>
+                        <div class="row mb-1" coordinateDiv id="canvasBottomRightCorner">
+                            <div class="col">
+                                <span class="mt-2 ml-2">Canvas | Bottom Right Corner:</span>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="x" aria-label="X">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="y" aria-label="Y">
+                                </div>
+                            </div>
+                            <div class="col col-sm-1">
+                                <span svg-working></span>
+                            </div>
+                        </div>
+                        <div class="row mb-1" coordinateDiv id="contextRedefineCanvas">
+                            <div class="col">
+                                <span class="mt-2 ml-2">Context Menu | Redefine Canvas:</span>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="x Relative" aria-label="x Relative">
+                                    <input type="text" class="form-control mx-2 border-025rem" placeholder="y Relative" aria-label="y Relative">
+                                </div>
+                            </div>
+                            <div class="col col-sm-1">
+                                <span svg-working></span>
+                            </div>
                         </div>
                     </div>
-                    <div class="row mb-1" coordinateDiv id="toolWatercolor">
-                        <div class="col">
-                            <span class="mt-2 ml-2">Tool | Watercolor:</span>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
-                                    aria-label="X">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
-                                    aria-label="Y">
-                            </div>
-                        </div>
-                        <div class="col col-sm-1">
-                            <span svg-working></span>
-                        </div>
-                    </div>
-                    <div class="row mb-1" coordinateDiv id="toolPixelPencil">
-                        <div class="col">
-                            <span class="mt-2 ml-2">Tool | Pixel Pencil:</span>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
-                                    aria-label="X">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
-                                    aria-label="Y">
-                            </div>
-                        </div>
-                        <div class="col col-sm-1">
-                            <span svg-working></span>
-                        </div>
-                    </div>
-                    <div class="row mb-1" coordinateDiv id="toolGraphitePencil">
-                        <div class="col">
-                            <span class="mt-2 ml-2">Tool | Graphite Pencil:</span>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
-                                    aria-label="X">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
-                                    aria-label="Y">
-                            </div>
-                        </div>
-                        <div class="col col-sm-1">
-                            <span svg-working></span>
-                        </div>
-                    </div>
-                    <div class="row mb-1" coordinateDiv id="toolCrayon">
-                        <div class="col">
-                            <span class="mt-2 ml-2">Tool | Crayon:</span>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
-                                    aria-label="X">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
-                                    aria-label="Y">
-                            </div>
-                        </div>
-                        <div class="col col-sm-1">
-                            <span svg-working></span>
-                        </div>
-                    </div>
-                    <div class="row mb-1" coordinateDiv id="boxBrushSize">
-                        <div class="col">
-                            <span class="mt-2 ml-2">Values | Brush Size:</span>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
-                                    aria-label="X">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
-                                    aria-label="Y">
-                            </div>
-                        </div>
-                        <div class="col col-sm-1">
-                            <span svg-working></span>
-                        </div>
-                    </div>
-                    <div class="row mb-1" coordinateDiv id="boxBrushOpacity">
-                        <div class="col">
-                            <span class="mt-2 ml-2">Values | Brush Opacity:</span>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
-                                    aria-label="X">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
-                                    aria-label="Y">
-                            </div>
-                        </div>
-                        <div class="col col-sm-1">
-                            <span svg-working></span>
-                        </div>
-                    </div>
-                    <div class="row mb-1" coordinateDiv id="boxZoom">
-                        <div class="col">
-                            <span class="mt-2 ml-2">Values | Zoom:</span>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
-                                    aria-label="X">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
-                                    aria-label="Y">
-                            </div>
-                        </div>
-                        <div class="col col-sm-1">
-                            <span svg-working></span>
-                        </div>
-                    </div>
-                    <div class="row mb-1" coordinateDiv id="buttonSelectedColorPreview">
-                        <div class="col">
-                            <span class="mt-2 ml-2">Button | Selected Color Preview:</span>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
-                                    aria-label="X">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
-                                    aria-label="Y">
-                            </div>
-                        </div>
-                        <div class="col col-sm-1">
-                            <span svg-working></span>
-                        </div>
-                    </div>
-                    <div class="row mb-1" coordinateDiv id="selectColorRed">
-                        <div class="col">
-                            <span class="mt-2 ml-2">Color Selector | Red:</span>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
-                                    aria-label="X">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
-                                    aria-label="Y">
-                            </div>
-                        </div>
-                        <div class="col col-sm-1">
-                            <span svg-working></span>
-                        </div>
-                    </div>
-                    <div class="row mb-1" coordinateDiv id="selectColorGreen">
-                        <div class="col">
-                            <span class="mt-2 ml-2">Color Selector | Green:</span>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
-                                    aria-label="X">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
-                                    aria-label="Y">
-                            </div>
-                        </div>
-                        <div class="col col-sm-1">
-                            <span svg-working></span>
-                        </div>
-                    </div>
-                    <div class="row mb-1" coordinateDiv id="selectColorBlue">
-                        <div class="col">
-                            <span class="mt-2 ml-2">Color Selector | Blue:</span>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
-                                    aria-label="X">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
-                                    aria-label="Y">
-                            </div>
-                        </div>
-                        <div class="col col-sm-1">
-                            <span svg-working></span>
-                        </div>
-                    </div>
-                    <div class="row mb-1" coordinateDiv id="selectColorOkButton">
-                        <div class="col">
-                            <span class="mt-2 ml-2">Color Selector | Ok Button:</span>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
-                                    aria-label="X">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
-                                    aria-label="Y">
-                            </div>
-                        </div>
-                        <div class="col col-sm-1">
-                            <span svg-working></span>
-                        </div>
-                    </div>
-                    <div class="row mb-1" coordinateDiv id="canvasTopLeftCorner">
-                        <div class="col">
-                            <span class="mt-2 ml-2">Canvas | Top Left Corner:</span>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
-                                    aria-label="X">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
-                                    aria-label="Y">
-                            </div>
-                        </div>
-                        <div class="col col-sm-1">
-                            <span svg-working></span>
-                        </div>
-                    </div>
-                    <div class="row mb-1" coordinateDiv id="canvasBottomRightCorner">
-                        <div class="col">
-                            <span class="mt-2 ml-2">Canvas | Bottom Right Corner:</span>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x"
-                                    aria-label="X">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y"
-                                    aria-label="Y">
-                            </div>
-                        </div>
-                        <div class="col col-sm-1">
-                            <span svg-working></span>
-                        </div>
-                    </div>
-                    <div class="row mb-1" coordinateDiv id="contextRedefineCanvas">
-                        <div class="col">
-                            <span class="mt-2 ml-2">Context Menu | Redefine Canvas:</span>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="x Relative"
-                                    aria-label="X">
-                                <input type="text" class="form-control mx-2 border-025rem" placeholder="y Relative"
-                                    aria-label="Y">
-                            </div>
-                        </div>
-                        <div class="col col-sm-1">
-                            <span svg-working></span>
-                        </div>
+                    <div id="fileAlertPlaceholder"></div>
+                    <div class="d-flex gap-5px">
+                        <button class="btn btn-secondary mr-2 mb-4" type="button" data-bs-toggle="modal" data-bs-target="#loadValuesModal">Load default values</button>
+                        <button class="btn btn-primary mr-2 mb-4" load-coordvalues type="button" onclick="loadPositionValues()">Load values</button>
+                        <button class="btn btn-success mr-2 mb-4" type="button" onclick="savePositionValues()">Save values</button>
                     </div>
                 </div>
-                <div id="fileAlertPlaceholder"></div>
-                <div class="d-flex gap-5px">
-                    <button class="btn btn-secondary mr-2 mb-4" type="button" data-bs-toggle="modal" data-bs-target="#loadValuesModal">Load default values</button>
-                    <button class="btn btn-primary mr-2 mb-4" load-coordvalues type="button" onclick="loadPositionValues()">Load values</button>
-                    <button class="btn btn-success mr-2 mb-4" type="button" onclick="savePositionValues()">Save values</button>
-                </div>
+                <aside class=" col col-sm-2">
+                    <!-- Cursor current position -->
+                    <h3>Current cursor position</h3>
+                    <p>x: <span coordinateDiv id="xCursorPos"></span></p>
+                    <p>y: <span coordinateDiv id="yCursorPos"></span></p>
+                </aside>
             </div>
-            <aside class=" col col-sm-2">
-                <!-- Cursor current position -->
-                <h3>Current cursor position</h3>
-                <p>x: <span coordinateDiv id="xCursorPos"></span></p>
-                <p>y: <span coordinateDiv id="yCursorPos"></span></p>
-            </aside>
         </div>
-    </div>
+    </section>
 </div>

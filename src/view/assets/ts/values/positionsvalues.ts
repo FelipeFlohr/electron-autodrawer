@@ -1,5 +1,5 @@
-import { Point } from "../../../types/point"
-import { Positions } from "../../../types/positions"
+import { Point } from "../../../../types/point"
+import { Positions } from "../../../../types/positions"
 
 export class PositionValues {
 

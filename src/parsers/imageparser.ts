@@ -9,16 +9,16 @@ import { log, LogLevel } from "../logger/logger";
  * @author Felipe Matheus Flohr
  */
 export class ImageParser {
-    private readonly _path: string
-    private _image: jimp
+    private readonly _image: Buffer
+    private _imageParsed: jimp
     private _pixels: ParsedInstructions[]
 
     /**
      * Class constructor
      * @param path - Path to image
      */
-    constructor(path: string) {
-        this._path = path;
+    constructor(image: ArrayBuffer) {
+        this._image = Buffer.from(image)
     }
 
     /**
@@ -27,7 +27,7 @@ export class ImageParser {
      * @async
      */
     public async build() {
-        this._image = await jimp.read(this._path)
+        this._imageParsed = await jimp.read(this._image)
         this._pixels = this.getPixels()
 
         log(LogLevel.OK, "Parsed the image.")
@@ -41,8 +41,8 @@ export class ImageParser {
      */
     private getPixels(): ParsedInstructions[] {
         const pixels: Pixel[] = []
-        const width = this._image.bitmap.width
-        const height = this._image.bitmap.height
+        const width = this._imageParsed.bitmap.width
+        const height = this._imageParsed.bitmap.height
 
         // Get all the pixels with its position
         for (let x = 0; x < width; x++) {
@@ -125,7 +125,7 @@ export class ImageParser {
      * @returns the image as a JIMP type
      */
     get image(): jimp {
-        return this._image
+        return this._imageParsed
     }
 
     /**
@@ -143,7 +143,7 @@ export class ImageParser {
      */
     private getPixelAt(point: Point): Color {
         const toInt = (num: number) => parseInt(`${num}`)
-        const hex = this._image.getPixelColor(point.x, point.y)
+        const hex = this._imageParsed.getPixelColor(point.x, point.y)
         return {
             r: toInt(jimp.intToRGBA(hex).r),
             g: toInt(jimp.intToRGBA(hex).g),

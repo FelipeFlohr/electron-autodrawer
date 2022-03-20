@@ -1,15 +1,20 @@
-import { PositionValues } from "./positionsvalues"
-import { ToolsValues } from "./toolsvalues"
+import { Dimension } from "../../../types/dimension"
+import { Canvas } from "../../../models/canvas"
+import { ImageValues } from "./values/imagevalues"
+import { PositionValues } from "./values/positionsvalues"
+import { ToolsValues } from "./values/toolsvalues"
 
 export class Settings {
 
     static instance: Settings
     public readonly positions: PositionValues
     public readonly values: ToolsValues
+    public readonly image: ImageValues
 
     private constructor() {
         this.positions = new PositionValues()
         this.values = new ToolsValues()
+        this.image = new ImageValues()
     }
 
     static getInstance(): Settings {

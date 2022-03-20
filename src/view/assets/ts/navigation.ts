@@ -1,12 +1,14 @@
 import { Coordinates } from "./pages/coordinates"
+import { Image } from "./pages/image";
 import { ToolsValues } from "./pages/values"
 import { Welcome } from "./pages/welcome"
 import { Settings } from "./settings"
 
 // Global classes variables
-let welcome: Welcome;
-let coordinates: Coordinates;
-let values: ToolsValues;
+let welcome: Welcome
+let coordinates: Coordinates
+let values: ToolsValues
+let image: Image
 
 // Creates the instance
 Settings.getInstance()
@@ -63,6 +65,10 @@ function route() {
             values = new ToolsValues()
             values.run()
             break
+        case "image.html":
+            image = new Image()
+            image.run()
+            break
         default:
             console.warn(`Current page (${currentPage}) is not routed to its main function.`)
     }
@@ -80,7 +86,10 @@ initialNav()
 global.loadDefaultPositionValues = () => coordinates.loadDefaultValues()
 global.loadPositionValues = () => coordinates.loadValuesButton()
 global.savePositionValues = () => coordinates.saveValuesButton()
+
 global.loadDefaultToolsValues = () => values.loadDefaultValues()
 global.changeTool = (tool: string) => values.changeTool(tool)
 global.loadToolsValues = () => values.loadValuesButton()
 global.saveToolsValues = () => values.saveValuesButton()
+
+global.loadImage = (e: HTMLInputElement) => image.loadImageButton(e)

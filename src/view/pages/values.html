@@ -7,7 +7,8 @@
     </header>
 
     <!-- Modal -->
-    <div class="modal fade" id="loadValuesModal" tabindex="-1" aria-labelledby="loadValuesModalLabel" aria-hidden="true">
+    <div class="modal fade" id="loadValuesModal" tabindex="-1" aria-labelledby="loadValuesModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content bg-gray700">
                 <div class="modal-header">
@@ -15,85 +16,87 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Default values are based on a 1920x1080 resolution and a 4000x3000 canvas. It might not be compatible if your resolution is different.
+                    Default values are based on a 1920x1080 resolution and a 4000x3000 canvas. It might not be
+                    compatible if your resolution is different.
                     If you load default values, <span class="fw-bold">every data will be overwritten.</span>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="loadDefaultToolsValues()">Load default values (OVERWRITE DATA)</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        onclick="loadDefaultToolsValues()">Load default values (OVERWRITE DATA)</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container mt-6">
-        <div class="row">
-            <div class="col">
-                <!-- Values -->
-                <div class="container">
-                    <div class="row mb-1" valuesDiv id="zoom">
-                        <div class="col pt-4">
-                            <span class="mt-2 ml-2">Zoom:</span>
-                        </div>
-                        <div class="col">
-                            <label for="zoomAmountRange" class="form-label">Zoom amount: <span id="zoomAmountSpan"></span>%</label>
-                            <input type="range" class="form-range" min="1" max="100" id="zoomAmountRange" valueRange>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row mb-1" valuesDiv id="brushSize">
-                        <div class="col pt-4">
-                            <span class="mt-2 ml-2">Brush size:</span>
-                        </div>
-                        <div class="col">
-                            <label for="brushSizeRange" class="form-label">Brush size: <span id="brushSizeSpan"></span>px</label>
-                            <input type="range" class="form-range" min="1" max="10" id="brushSizeRange" valueRange>
+    <section>
+        <div class="container mt-6">
+            <div class="row">
+                <div class="col">
+                    <!-- Values -->
+                    <div class="container">
+                        <div class="row mb-1" valuesDiv id="zoom">
+                            <div class="col pt-4">
+                                <span class="mt-2 ml-2">Zoom:</span>
+                            </div>
+                            <div class="col">
+                                <label for="zoomAmountRange" class="form-label">Zoom amount: <span id="zoomAmountSpan"></span>%</label>
+                                <input type="range" class="form-range" min="1" max="100" id="zoomAmountRange" valueRange>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="container">
-                    <div class="row mb-1" valuesDiv id="brushOpacity">
-                        <div class="col pt-4">
-                            <span class="mt-2 ml-2">Brush opacity:</span>
-                        </div>
-                        <div class="col">
-                            <label for="brushOpacityRange" class="form-label">Brush opacity: <span
-                                    id="brushOpacitySpan"></span>%</label>
-                            <input type="range" class="form-range" min="1" max="100" id="brushOpacityRange" valueRange>
+                    <div class="container">
+                        <div class="row mb-1" valuesDiv id="brushSize">
+                            <div class="col pt-4">
+                                <span class="mt-2 ml-2">Brush size:</span>
+                            </div>
+                            <div class="col">
+                                <label for="brushSizeRange" class="form-label">Brush size: <span id="brushSizeSpan"></span>px</label>
+                                <input type="range" class="form-range" min="1" max="10" id="brushSizeRange" valueRange>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="container">
-                    <div class="row mb-1" valuesDiv id="tool">
-                        <div class="col pt-1">
-                            <span class="mt-2 ml-2">Tool:</span>
+                    <div class="container">
+                        <div class="row mb-1" valuesDiv id="brushOpacity">
+                            <div class="col pt-4">
+                                <span class="mt-2 ml-2">Brush opacity:</span>
+                            </div>
+                            <div class="col">
+                                <label for="brushOpacityRange" class="form-label">Brush opacity: <span id="brushOpacitySpan"></span>%</label>
+                                <input type="range" class="form-range" min="1" max="100" id="brushOpacityRange" valueRange>
+                            </div>
                         </div>
-                        <div class="col">
-                            <div class="dropdown">
-                                <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span id="toolSelected"></span>
-                                </a>
+                    </div>
+                    <div class="container">
+                        <div class="row mb-1" valuesDiv id="tool">
+                            <div class="col pt-1">
+                                <span class="mt-2 ml-2">Tool:</span>
+                            </div>
+                            <div class="col">
+                                <div class="dropdown">
+                                    <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span id="toolSelected"></span>
+                                    </a>
 
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li><a class="dropdown-item" onclick="changeTool('marker')">Marker</a></li>
-                                    <li><a class="dropdown-item" onclick="changeTool('watercolor')">Watercolor</a></li>
-                                    <li><a class="dropdown-item" onclick="changeTool('pixelPencil')">Pixel Pencil</a></li>
-                                    <li><a class="dropdown-item" onclick="changeTool('graphitePencil')">Graphite Pencil</a></li>
-                                    <li><a class="dropdown-item" onclick="changeTool('crayon')">Crayon</a></li>
-                                </ul>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <li><a class="dropdown-item" onclick="changeTool('marker')">Marker</a></li>
+                                        <li><a class="dropdown-item" onclick="changeTool('watercolor')">Watercolor</a></li>
+                                        <li><a class="dropdown-item" onclick="changeTool('pixelPencil')">Pixel Pencil</a></li>
+                                        <li><a class="dropdown-item" onclick="changeTool('graphitePencil')">Graphite Pencil</a></li>
+                                        <li><a class="dropdown-item" onclick="changeTool('crayon')">Crayon</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="mt-4" id="fileAlertPlaceholder"></div>
-            <div class="d-flex gap-5px mt-3">
-                <button class="btn btn-secondary mr-2 mb-4" type="button" data-bs-toggle="modal" data-bs-target="#loadValuesModal">Load default values</button>
-                <button class="btn btn-primary mr-2 mb-4" load-coordvalues type="button" onclick="loadToolsValues()">Load values</button>
-                <button class="btn btn-success mr-2 mb-4" type="button" onclick="saveToolsValues()">Save values</button>
+                <div class="mt-4" id="fileAlertPlaceholder"></div>
+                <div class="d-flex gap-5px mt-3">
+                    <button class="btn btn-secondary mr-2 mb-4" type="button" data-bs-toggle="modal" data-bs-target="#loadValuesModal">Load default values</button>
+                    <button class="btn btn-primary mr-2 mb-4" load-coordvalues type="button" onclick="loadToolsValues()">Load values</button>
+                    <button class="btn btn-success mr-2 mb-4" type="button" onclick="saveToolsValues()">Save values</button>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 </div>
