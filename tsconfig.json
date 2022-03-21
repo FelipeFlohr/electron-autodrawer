@@ -9,7 +9,8 @@
         "watch": true,
         "resolveJsonModule": true,
         "downlevelIteration": true,
-        "rootDir": "src"
+        "rootDir": "src",
+        "allowJs": true
     },
     "include": [
         "src/**/*",

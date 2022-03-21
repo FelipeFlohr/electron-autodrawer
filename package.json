@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp",
-    "buildElectron": "gulp && cd dist && electron index.js",
+    "build-electron": "gulp && cd dist && electron index.js",
     "electron": "cd dist && electron index.js"
   },
   "keywords": [
@@ -28,7 +28,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-htmlmin": "^5.0.1",
     "gulp-sass": "^5.1.0",
-    "gulp-streamify": "^1.0.2",
+    "gulp-size": "^4.0.1",
     "gulp-typescript": "^6.0.0-alpha.1",
     "gulp-uglify": "^3.0.2",
     "gulp-uglifycss": "^1.1.0",
@@ -36,6 +36,7 @@
     "sass": "^1.49.9",
     "tsify": "^5.0.4",
     "typescript": "^4.6.2",
+    "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
