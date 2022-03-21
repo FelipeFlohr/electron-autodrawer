@@ -1,4 +1,5 @@
 import { Coordinates } from "./pages/coordinates"
+import { Draw } from "./pages/draw";
 import { Image } from "./pages/image";
 import { ToolsValues } from "./pages/values"
 import { Welcome } from "./pages/welcome"
@@ -9,6 +10,7 @@ let welcome: Welcome
 let coordinates: Coordinates
 let values: ToolsValues
 let image: Image
+let draw: Draw
 
 // Creates the instance
 Settings.getInstance()
@@ -68,6 +70,10 @@ function route() {
         case "image.html":
             image = new Image()
             image.run()
+            break
+        case "draw.html":
+            draw = new Draw()
+            draw.run()
             break
         default:
             console.warn(`Current page (${currentPage}) is not routed to its main function.`)
