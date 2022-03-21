@@ -1,6 +1,7 @@
 import { app, BrowserWindow } from "electron"
 
 app.whenReady().then(() => {
+    app.allowRendererProcessReuse = false
 
     // Creates the window
     const window = new BrowserWindow({
@@ -11,7 +12,8 @@ app.whenReady().then(() => {
         webPreferences: {
             nodeIntegration: true,
             allowRunningInsecureContent: true,
-            enableRemoteModule: true
+            enableRemoteModule: true,
+            contextIsolation: false,
         }
     })
 

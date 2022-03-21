@@ -1,18 +1,16 @@
 const gulp = require("gulp")
 const babel = require("gulp-babel")
-const buffer = require("vinyl-buffer")
 const concat = require("gulp-concat")
 const htmlmin = require("gulp-htmlmin")
 const merge = require("merge-stream")
 const sass = require("gulp-sass")(require("sass"))
 const size = require("gulp-size")
-const source = require("vinyl-source-stream")
-const uglify = require("gulp-uglify")
+const uglify = require("gulp-uglify-es").default
 const uglifycss = require("gulp-uglifycss")
 
-const glob = require("glob")
-const browserify = require("browserify")
-const tsify = require("tsify")
+const webpack = require("webpack")
+const gulpWebpack = require("webpack-stream")
+const nodeExternals = require("webpack-node-externals")
 
 
 function frontendHTML(cb) {
@@ -35,15 +33,35 @@ function frontendSASS(cb) {
 
 function frontendScripts(cb) {
     const tsStream = () => {
-        const entryFiles = glob.sync("src/view/assets/**/*.ts")
-        return browserify({
-            debug: true,
-            entries: entryFiles
-        })
-            .plugin(tsify)
-            .bundle()
-            .pipe(source("app.js"))
-            .pipe(buffer())
+        return gulp.src("src/view/assets/ts/navigation.ts")
+            .pipe(gulpWebpack({
+                mode: "production",
+                target: "web",
+                node: {
+                    __dirname: false
+                },
+                module: {
+                    rules: [
+                        {
+                            test: /\.ts$/,
+                            use: "ts-loader",
+                            exclude: /node_modules/,
+                        },
+                        {
+                            test: /\.node$/,
+                            use: "node-loader"
+                        }
+                    ]
+                },
+                resolve: {
+                    extensions: [".ts", ".js", ".node"]
+                },
+                output: {
+                    filename: "app.min.js"
+                },
+                externals: [nodeExternals()],
+                externalsPresets: { node: true }
+            }, webpack))
     }
     const jsStream = () => {
         return gulp.src("node_modules/bootstrap/dist/js/bootstrap.bundle.js")

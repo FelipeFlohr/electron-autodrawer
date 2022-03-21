@@ -1,15 +1,16 @@
 {
     "compilerOptions": {
-        "module": "CommonJS",
+        "module": "ES2015",
         "esModuleInterop": true,
         "target": "es5",
         "noImplicitAny": false,
         "outDir": "dist",
         "baseUrl": ".",
         "watch": true,
-        "resolveJsonModule": true,
         "downlevelIteration": true,
         "rootDir": "src",
+        "moduleResolution": "Node",
+        "resolveJsonModule": true,
         "allowJs": true
     },
     "include": [

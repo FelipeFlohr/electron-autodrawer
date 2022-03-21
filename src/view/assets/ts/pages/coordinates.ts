@@ -3,6 +3,7 @@ import {Page} from "../models/page";
 import defaultPositions from "../../../../json/defaultpositions.json"
 import {Positions} from "../../../../types/positions";
 import {Settings} from "../settings";
+import { MouseControl } from "../../../../controls/mousecontrol";
 
 const positionValues = Settings.getInstance().positions
 
@@ -15,6 +16,7 @@ export class Coordinates extends Page {
         this.setSvgs()
         this.setListeners()
         this.loadValues()
+        this.updateMousePos()
     }
 
     public async loadDefaultValues(): Promise<void> {
@@ -190,6 +192,17 @@ export class Coordinates extends Page {
                 yInput.addEventListener("input", listenerForInputs)
             }
         })
+    }
+
+    private async updateMousePos() {
+        const xElement = await this.waitForElement("#xCursorPos")
+        const yElement = await this.waitForElement("#yCursorPos")
+
+        setInterval(() => {
+            const mousePos = MouseControl.getCursorPosition()
+            xElement.innerHTML = `${mousePos.x}`
+            yElement.innerHTML = `${mousePos.y}`
+        }, 100)
     }
 }
 
