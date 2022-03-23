@@ -1,3 +1,6 @@
+import { Drawer } from "../../../../drawer/drawer";
+import { Canvas } from "../../../../models/canvas";
+import { ImageParser } from "../../../../parsers/imageparser";
 import { Page } from "../models/page";
 import { Settings } from "../settings";
 
@@ -6,6 +9,7 @@ export class Draw extends Page {
     noMarkerHtml = `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="bi bi-x-lg red-svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/><path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/></svg>`
 
     public async run() {
+        this.setDrawButtonLogic()
         const status = await this.setStatus()
         if (!status) {
             const drawerElement = await this.waitForElement("#drawer")
@@ -31,5 +35,37 @@ export class Draw extends Page {
         imageElement.innerHTML = createStatus(imageStatus, "Image is loaded.", "Image is not loaded.")
 
         return coordStatus && valuesStatus && imageStatus
+    }
+
+    private async setDrawButtonLogic() {
+        const drawButton = await this.waitForElement("#draw-button")
+        const drawerCount = await this.waitForElement("#drawer-count")
+        const startDrawer = async () => {
+            const imageParser = new ImageParser(Settings.getInstance().image.image)
+            await imageParser.build()
+            const instructions = imageParser.pixels
+
+            const positions = Settings.getInstance().positions.getPositions()
+            const values = Settings.getInstance().values.getValues()
+            const canvas = new Canvas(positions.canvasTopLeftCorner, positions.canvasBottomRightCorner, Settings.getInstance().image.getImageSize())
+
+            console.log(instructions[0])
+            const drawer = new Drawer(instructions, positions, values, canvas)
+            await drawer.start()
+        }
+
+        drawButton.addEventListener("click", () => {
+            let count = 5
+            const interval = setInterval(() => {
+                drawerCount.innerHTML = `Starting in ${count}...`
+
+                if (count == 0) {
+                    clearInterval(interval)
+                    startDrawer()
+                } else {
+                    count--
+                }
+            }, 1000)
+        })
     }
 }

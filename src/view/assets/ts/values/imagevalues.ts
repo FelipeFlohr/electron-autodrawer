@@ -1,9 +1,9 @@
 import { Dimension } from "../../../../types/dimension"
+import Jimp from "jimp"
 
 export class ImageValues {
 
     private _image: ArrayBuffer
-    private _imageSize: Dimension
 
     public isImageValid(): boolean {
         return this.image != null
@@ -17,11 +17,11 @@ export class ImageValues {
         this._image = value
     }
 
-    get imageSize() {
-        return this.imageSize
-    }
+    getImageSize(): Dimension {
+        const image = new Jimp(this._image)
+        const width = image.getWidth()
+        const height = image.getHeight()
 
-    set imageSize(value: Dimension) {
-        this._imageSize = value
+        return { width: width, height: height }
     }
 }

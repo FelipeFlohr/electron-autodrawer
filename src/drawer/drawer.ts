@@ -37,18 +37,18 @@ export class Drawer {
      */
     public async start() {
         log(LogLevel.INFO, "Starting in 3 seconds...")
-        sleep(3000)
+        await sleep(3000)
 
-        this.redefineCanvas()
-        this.setZoomValue()
+        await this.redefineCanvas()
+        await this.setZoomValue()
         this.setTool()
-        this.setThickness()
-        this.setOpacity()
+        await this.setThickness()
+        await this.setOpacity()
 
-        this._parsedInstructions.forEach(parsedInstruction => {
+        for (let parsedInstruction of this._parsedInstructions) {
             const color = parsedInstruction.color
 
-            this.setColor(color)
+            await this.setColor(color)
             parsedInstruction.instructions.forEach(instruction => {
                 const pixelRelativePosition = instruction.pixel.position
                 const startingPoint = this._canvas.startingPoint
@@ -67,7 +67,7 @@ export class Drawer {
                 }
 
             })
-        })
+        }
 
         log(LogLevel.OK, "Drawing finished")
     }
@@ -76,37 +76,37 @@ export class Drawer {
      * Sets the color on Paint 3D
      * @param color Color to be set
      */
-    private setColor(color: Color) {
+    private async setColor(color: Color) {
         const doubleClick = () => {
             MouseControl.leftClick()
             MouseControl.leftClick()
         }
 
         MouseControl.leftClick(this._positions.buttonSelectedColorPreview)
-        sleep(200)
+        await sleep(200)
 
         MouseControl.moveTo(this._positions.selectColorRed)
         doubleClick()
-        sleep(200)
+        await sleep(200)
         KeyboardControl.delete()
         KeyboardControl.type(color.r)
 
         MouseControl.moveTo(this._positions.selectColorGreen)
         doubleClick()
-        sleep(200)
+        await sleep(200)
         KeyboardControl.delete()
         KeyboardControl.type(color.g)
 
         MouseControl.moveTo(this._positions.selectColorBlue)
         doubleClick()
-        sleep(200)
+        await sleep(200)
         KeyboardControl.delete()
         KeyboardControl.type(color.b)
 
         MouseControl.moveTo(this._positions.selectColorOkButton)
-        sleep(100)
+        await sleep(100)
         MouseControl.leftClick()
-        sleep(100)
+        await sleep(100)
 
         if (color.a) {
             const baseOpacity = this._values.brushOpacity
@@ -122,9 +122,9 @@ export class Drawer {
      * Sets the opacity on Paint 3D
      * @param opacity Opacity value. If no value is passed, then it will use the {@link Values}' one.
      */
-    private setOpacity(opacity = this._values.brushOpacity) {
+    private async setOpacity(opacity = this._values.brushOpacity) {
         MouseControl.leftClick(this._positions.boxBrushOpacity)
-        sleep(150)
+        await sleep(150)
 
         KeyboardControl.type(opacity)
         KeyboardControl.enter()
@@ -135,9 +135,9 @@ export class Drawer {
     /**
      * Sets the tool's thickness on Paint 3D
      */
-    private setThickness() {
+    private async setThickness() {
         MouseControl.leftClick(this._positions.boxBrushSize)
-        sleep(150)
+        await sleep(150)
 
         KeyboardControl.type(this._values.brushSize)
         KeyboardControl.enter()
@@ -183,11 +183,11 @@ export class Drawer {
     /**
      * Sets the zoom value
      */
-    private setZoomValue() {
+    private async setZoomValue() {
         MouseControl.leftClick(this._positions.boxZoom)
         KeyboardControl.type(this._values.zoom)
         KeyboardControl.enter()
-        sleep(500)
+        await sleep(500)
 
         log(LogLevel.INFO, `Zoom value set to ${this._values.zoom}`)
     }
@@ -195,11 +195,11 @@ export class Drawer {
     /**
      * Redefine the canvas
      */
-    private redefineCanvas() {
+    private async redefineCanvas() {
         MouseControl.moveTo(this._canvas.center)
-        sleep(75)
+        await sleep(75)
         MouseControl.rightClick()
-        sleep(150)
+        await sleep(150)
         MouseControl.move(this._positions.contextRedefineCanvas)
         MouseControl.leftClick()
 

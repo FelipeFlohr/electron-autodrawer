@@ -52,7 +52,6 @@ export class Image extends Page {
 
                 if (valid) {
                     this.instance.image = fileReader.result
-                    this.instance.imageSize = imageSize
 
                     // Creates the image
                     const img = this.createImageElement(URL.createObjectURL(imgElement.files[0]))

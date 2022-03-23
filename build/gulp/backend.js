@@ -1,7 +1,7 @@
 const gulp = require("gulp")
 const babel = require("gulp-babel")
 const ts = require("gulp-typescript").createProject("tsconfig.json")
-const uglify = require("gulp-uglify")
+const uglify = require("gulp-uglify-es").default
 const { extensions } = require("../extensions.json")
 
 function backendTypescript(cb) {
