@@ -1,0 +1,16 @@
+.img-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 550px;
+}
+
+.img-wrapper > img {
+    width: auto;
+    height: 100%;
+}
+
+.img-wrapper > p {
+    font-style: italic;
+}

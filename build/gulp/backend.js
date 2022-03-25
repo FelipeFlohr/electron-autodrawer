@@ -4,6 +4,7 @@ const ts = require("gulp-typescript").createProject("tsconfig.json")
 const uglify = require("gulp-uglify-es").default
 const { extensions } = require("../extensions.json")
 
+
 function backendTypescript(cb) {
     gulp.src(["src/**/*.ts", "!src/view/**/*.ts"])
         .pipe(ts())

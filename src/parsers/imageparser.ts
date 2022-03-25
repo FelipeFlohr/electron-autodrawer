@@ -148,7 +148,7 @@ export class ImageParser {
             r: toInt(jimp.intToRGBA(hex).r),
             g: toInt(jimp.intToRGBA(hex).g),
             b: toInt(jimp.intToRGBA(hex).b),
-            a: jimp.intToRGBA(hex).a >= 255 ? null : toInt(jimp.intToRGBA(hex).a)
+            a: jimp.intToRGBA(hex).a == 0 ? null : toInt(jimp.intToRGBA(hex).a)
         }
     }
 

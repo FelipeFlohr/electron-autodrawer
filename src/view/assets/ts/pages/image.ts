@@ -121,6 +121,7 @@ export class Image extends Page {
     private createImageElement(src: string): HTMLImageElement {
         const img = document.createElement("img")
         img.src = src
+        img.className = "img-preview"
 
         img.onmouseenter = e => this.imgAnimationMouseHover(e)
         img.onmouseleave = e => this.imgAnimationMouseLeave(e)

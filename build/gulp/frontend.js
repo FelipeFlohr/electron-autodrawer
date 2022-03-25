@@ -4,13 +4,13 @@ const concat = require("gulp-concat")
 const htmlmin = require("gulp-htmlmin")
 const merge = require("merge-stream")
 const sass = require("gulp-sass")(require("sass"))
-const size = require("gulp-size")
 const uglify = require("gulp-uglify-es").default
 const uglifycss = require("gulp-uglifycss")
 
 const webpack = require("webpack")
 const gulpWebpack = require("webpack-stream")
 const nodeExternals = require("webpack-node-externals")
+const { extensions } = require("../extensions.json")
 
 
 function frontendHTML(cb) {
@@ -71,10 +71,20 @@ function frontendScripts(cb) {
     merge(tsStream(), jsStream())
         .pipe(uglify({ compress: true }))
         .pipe(concat("app.min.js", { newLine: false }))
-        .pipe(size({
-            title: "Frontend scripts"
-        }))
         .pipe(gulp.dest("dist/view/assets/js"))
+
+    cb()
+}
+
+function frontendOtherFiles(cb) {
+    const extensionsPath = []
+    extensions.forEach(extension => {
+        if (!extension.startsWith(".")) extension = `.${extension}`
+        extensionsPath.push(`src/view/**/*${extension}`)
+    })
+
+    gulp.src(extensionsPath)
+        .pipe(gulp.dest("dist"))
 
     cb()
 }
@@ -82,5 +92,6 @@ function frontendScripts(cb) {
 module.exports = {
     frontendScripts,
     frontendHTML,
-    frontendSASS
+    frontendSASS,
+    frontendOtherFiles
 }

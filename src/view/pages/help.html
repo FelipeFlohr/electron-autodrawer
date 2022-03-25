@@ -1,0 +1,96 @@
+<div class="d-flex flex-column flex-grow-1 fadein-text duration-1s">
+    <header>
+        <h1>The &quot;Autodrawer&quot;</h1>
+        <p>Autodrawer does the job of drawing an image file in Paint 3D using its native tools,
+            such as the Graphite Pencil, Crayon, etc. Every pixel on the image is parsed through the algorithm and drawn
+            using the machine&#39;s cursor and keyboard.</p>
+        <hr>
+    </header>
+    <section>
+        <h2>Settings: coordinates</h2>
+        <p>Every coordinate - but one - corresponds to an absolute XY point on your monitor.
+            These coordinates will be used previously and during the drawing process.
+            The locations to get the coordinates are listed below:</p>
+        <article class="my-4">
+            <h3>Tools:</h3>
+            <p><em>Paint 3D's tools are located at the top right corner. The tools listed below are
+                exemplified on the image.</em></p>
+            <ol>
+                <li>Marker</li>
+                <li>Watercolor</li>
+                <li>Pixel pencil</li>
+                <li>Graphite pencil</li>
+                <li>Crayon</li>
+            </ol>
+            <div class="img-wrapper">
+                <img src="../assets/img/tools.png" alt="">
+                <p>Each coordinate must be taken from the middle of the tool selection box.</p>
+            </div>
+        </article>
+        <article class="my-4">
+            <h3>Values & Selected Color Preview:</h3>
+            <p>The Drawer will use the following points to set the values:</p>
+            <ol>
+                <li>Brush Size</li>
+                <li>Brush Opacity</li>
+                <li>Zoom</li>
+                <li>Selected Color Preview</li>
+            </ol>
+            <div class="img-wrapper">
+                <img src="../assets/img/boxes.png" alt="">
+                <p>The points are located at the right side.</p>
+            </div>
+        </article>
+        <article class="my-4">
+            <h3>Color Selector:</h3>
+            <p>When you left click on the <em>Selected Color Preview</em>, a Color Selector will open. The coordinates must be taken based on the example image</p>
+            <ol>
+                <li>Red value</li>
+                <li>Green value</li>
+                <li>Blue value</li>
+                <li>Ok button</li>
+            </ol>
+            <div class="img-wrapper">
+                <img src="../assets/img/colorselector.png" alt="">
+            </div>
+        </article>
+        <article class="my-4">
+            <h3>Canvas:</h3>
+            <p>Canvas' coordinates must be taken from the points listed below:</p>
+            <ol>
+                <li>Top Left Corner</li>
+                <li>Bottom Right Corner</li>
+            </ol>
+            <div class="img-wrapper">
+                <img src="../assets/img/canvas.png" alt="">
+                <p>In this example, the canvas size is 4000x3000 and the zoom value is 25%.</p>
+            </div>
+        </article>
+        <article class="my-4">
+            <h3>Context Menu | Redefine Canvas</h3>
+            <p>When you right click on canvas, a context menu will open. The coordinate is taken from the point where you right click on canvas plus the XY amount used to move your cursor to the option.</p>
+            <p>Observation: this is the <strong>ONLY</strong> relative coordinate in the whole settings.</p>
+            <div class="img-wrapper">
+                <img src="../assets/img/contextbox.png" alt="">
+                <p>The arrow points towards the "Redefine Canvas" option (shown as "Redefinir exibição").</p>
+            </div>
+            <hr>
+        </article>
+    </section>
+    <section>
+        <h2>Settings: values</h2>
+        <p>The values below are going to be used by the drawer to set Paint 3D's tools and values. These settings are pretty much self explanatory:</p>
+        <ul>
+            <li>Zoom: amount of zoom that will be set.</li>
+            <li>Brush size: thickness in pixels of the tool. Each tool has a different thickness min and max amount.</li>
+            <li>Brush opacity: amount of opacity that will be set.</li>
+            <li>Tool: the tool that is going to be used.</li>
+        </ul>
+        <hr>
+    </section>
+    <section class="mb-5">
+        <h2>Settings: image</h2>
+        <p>A image is necessary for the drawer to start drawing <em>(obviously)</em>. This image cannot be greater than canvas' size.
+        Canvas size is calculated by its subtracting the axes.</p>
+    </section>
+</div>
