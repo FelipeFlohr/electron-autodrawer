@@ -7,14 +7,31 @@
         <hr>
     </header>
     <section>
-        <h2>Settings: coordinates</h2>
-        <p>Every coordinate - but one - corresponds to an absolute XY point on your monitor.
+        <h2>Contents:</h2>
+        <div id="toc">
+            <ul>
+                <li><a href="#coordinates" scrollable>Settings: coordinates</a></li>
+                <ul>
+                    <li><a href="#tools" scrollable>Tools</a></li>
+                    <li><a href="#values" scrollable>Values</a></li>
+                    <li><a href="#color-selector" scrollable>Color Selector</a></li>
+                    <li><a href="#canvas" scrollable>Canvas</a></li>
+                    <li><a href="#context-menu" scrollable>Context Menu | Redefine Canvas</a></li>
+                </ul>
+                <li><a href="#settings-values" scrollable>Settings: values</a></li>
+                <li><a href="#settings-image" scrollable>Settings: image</a></li>
+            </ul>
+        </div>
+    </section>
+    <section>
+        <h2 id="coordinates">Settings: coordinates</h2>
+        <p>Every coordinate - <a href="#context-menu" scrollable>but one</a> - corresponds to an absolute XY point on your monitor.
             These coordinates will be used previously and during the drawing process.
             The locations to get the coordinates are listed below:</p>
-        <article class="my-4">
+        <article class="my-4" id="tools">
             <h3>Tools:</h3>
             <p><em>Paint 3D's tools are located at the top right corner. The tools listed below are
-                exemplified on the image.</em></p>
+                    exemplified on the image.</em></p>
             <ol>
                 <li>Marker</li>
                 <li>Watercolor</li>
@@ -27,7 +44,7 @@
                 <p>Each coordinate must be taken from the middle of the tool selection box.</p>
             </div>
         </article>
-        <article class="my-4">
+        <article class="my-4" id="values">
             <h3>Values & Selected Color Preview:</h3>
             <p>The Drawer will use the following points to set the values:</p>
             <ol>
@@ -41,9 +58,10 @@
                 <p>The points are located at the right side.</p>
             </div>
         </article>
-        <article class="my-4">
+        <article class="my-4" id="color-selector">
             <h3>Color Selector:</h3>
-            <p>When you left click on the <em>Selected Color Preview</em>, a Color Selector will open. The coordinates must be taken based on the example image</p>
+            <p>When you left click on the <em>Selected Color Preview</em>, a Color Selector will open. The coordinates
+                must be taken based on the example image</p>
             <ol>
                 <li>Red value</li>
                 <li>Green value</li>
@@ -54,7 +72,7 @@
                 <img src="../assets/img/colorselector.png" alt="">
             </div>
         </article>
-        <article class="my-4">
+        <article class="my-4" id="canvas">
             <h3>Canvas:</h3>
             <p>Canvas' coordinates must be taken from the points listed below:</p>
             <ol>
@@ -66,9 +84,10 @@
                 <p>In this example, the canvas size is 4000x3000 and the zoom value is 25%.</p>
             </div>
         </article>
-        <article class="my-4">
+        <article class="my-4" id="context-menu">
             <h3>Context Menu | Redefine Canvas</h3>
-            <p>When you right click on canvas, a context menu will open. The coordinate is taken from the point where you right click on canvas plus the XY amount used to move your cursor to the option.</p>
+            <p>When you right click on canvas, a context menu will open. The coordinate is taken from the point where
+                you right click on canvas plus the XY amount used to move your cursor to the option.</p>
             <p>Observation: this is the <strong>ONLY</strong> relative coordinate in the whole settings.</p>
             <div class="img-wrapper">
                 <img src="../assets/img/contextbox.png" alt="">
@@ -78,19 +97,22 @@
         </article>
     </section>
     <section>
-        <h2>Settings: values</h2>
-        <p>The values below are going to be used by the drawer to set Paint 3D's tools and values. These settings are pretty much self explanatory:</p>
+        <h2 id="settings-values">Settings: values</h2>
+        <p>The values below are going to be used by the drawer to set Paint 3D's tools and values. These settings are
+            pretty much self explanatory:</p>
         <ul>
             <li>Zoom: amount of zoom that will be set.</li>
-            <li>Brush size: thickness in pixels of the tool. Each tool has a different thickness min and max amount.</li>
+            <li>Brush size: thickness in pixels of the tool. Each tool has a different thickness min and max amount.
+            </li>
             <li>Brush opacity: amount of opacity that will be set.</li>
             <li>Tool: the tool that is going to be used.</li>
         </ul>
         <hr>
     </section>
     <section class="mb-5">
-        <h2>Settings: image</h2>
-        <p>A image is necessary for the drawer to start drawing <em>(obviously)</em>. This image cannot be greater than canvas' size.
-        Canvas size is calculated by its subtracting the axes.</p>
+        <h2 id="settings-image">Settings: image</h2>
+        <p>A image is necessary for the drawer to start drawing <em>(obviously)</em>. This image cannot be greater than
+            canvas' size.
+            Canvas size is calculated by its subtracting the axes.</p>
     </section>
 </div>
