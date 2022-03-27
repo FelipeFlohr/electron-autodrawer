@@ -17,8 +17,8 @@ export class ImageValues {
         this._image = value
     }
 
-    getImageSize(): Dimension {
-        const image = new Jimp(this._image)
+    async getImageSize(): Promise<Dimension> {
+        const image = await Jimp.read(Buffer.from(this.image))
         const width = image.getWidth()
         const height = image.getHeight()
 

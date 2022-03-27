@@ -1,3 +1,4 @@
+import { MouseControl } from "../../../../controls/mousecontrol";
 import { Drawer } from "../../../../drawer/drawer";
 import { Canvas } from "../../../../models/canvas";
 import { ImageParser } from "../../../../parsers/imageparser";
@@ -40,6 +41,7 @@ export class Draw extends Page {
     private async setDrawButtonLogic() {
         const drawButton = await this.waitForElement("#draw-button")
         const drawerCount = await this.waitForElement("#drawer-count")
+        let canvas: Canvas
         const startDrawer = async () => {
             const imageParser = new ImageParser(Settings.getInstance().image.image)
             await imageParser.build()
@@ -47,7 +49,8 @@ export class Draw extends Page {
 
             const positions = Settings.getInstance().positions.getPositions()
             const values = Settings.getInstance().values.getValues()
-            const canvas = new Canvas(positions.canvasTopLeftCorner, positions.canvasBottomRightCorner, Settings.getInstance().image.getImageSize())
+            const imageSize = await Settings.getInstance().image.getImageSize()
+            canvas = new Canvas(positions.canvasTopLeftCorner, positions.canvasBottomRightCorner, imageSize)
 
             console.log(instructions[0])
             const drawer = new Drawer(instructions, positions, values, canvas)
@@ -56,12 +59,14 @@ export class Draw extends Page {
 
         drawButton.addEventListener("click", () => {
             let count = 5
-            const interval = setInterval(() => {
+            const interval = setInterval(async () => {
                 drawerCount.innerHTML = `Starting in ${count}...`
 
                 if (count == 0) {
                     clearInterval(interval)
-                    startDrawer()
+                    await startDrawer()
+                    MouseControl.moveTo(canvas.startingPoint.x, canvas.startingPoint.y)
+                    console.log(`Moved to: ${canvas.startingPoint.x}, ${canvas.startingPoint.y}`)
                 } else {
                     count--
                 }

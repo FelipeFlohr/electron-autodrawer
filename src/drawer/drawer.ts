@@ -47,6 +47,12 @@ export class Drawer {
 
         for (let parsedInstruction of this._parsedInstructions) {
             const color = parsedInstruction.color
+            log(LogLevel.INFO, `Total amount of instructions for (${color.r}, ${color.g}, ${color.b}): ${parsedInstruction.instructions.length}`)
+
+            if (parsedInstruction.instructions.length > 90000) {
+                log(LogLevel.WARNING, `The current instructions has more than 90k pixels. A sleep of 4s will be applied.`)
+                await sleep(4000)
+            }
 
             await this.setColor(color)
             parsedInstruction.instructions.forEach(instruction => {
@@ -82,11 +88,15 @@ export class Drawer {
             MouseControl.leftClick()
         }
 
-        MouseControl.leftClick(this._positions.buttonSelectedColorPreview)
-        await sleep(200)
+        MouseControl.moveTo(this._positions.buttonSelectedColorPreview)
 
+        await sleep(1750)
+        MouseControl.leftClick()
+
+        await sleep(350)
         MouseControl.moveTo(this._positions.selectColorRed)
-        doubleClick()
+        await sleep(200)
+        MouseControl.leftClick()
         await sleep(200)
         KeyboardControl.delete()
         KeyboardControl.type(color.r)
@@ -106,6 +116,8 @@ export class Drawer {
         MouseControl.moveTo(this._positions.selectColorOkButton)
         await sleep(100)
         MouseControl.leftClick()
+        await sleep(100)
+        KeyboardControl.type("a") // Prevents from switching to 2D or 3D mode
         await sleep(100)
 
         if (color.a) {

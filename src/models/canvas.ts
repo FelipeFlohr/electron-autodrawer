@@ -38,8 +38,8 @@ export class Canvas {
 
         const toInt = (num: number) => parseInt(`${num}`)
         this._startingPoint = {
-            x: this._center.x - toInt(this._imageSize.width / 2),
-            y: this._center.y - toInt(this._imageSize.height / 2)
+            x: toInt(this._center.x - (this._imageSize.width / 2)),
+            y: toInt(this._center.y - (this._imageSize.height / 2))
         }
 
         if (this._imageSize.width >= this._canvasSize.width || this._imageSize.height >= this._canvasSize.height) {

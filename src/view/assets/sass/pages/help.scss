@@ -18,3 +18,7 @@
 a[scrollable] {
     color: $cyan;
 }
+
+a[scrollable]:focus {
+    color: $blue;
+}
