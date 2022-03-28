@@ -49,11 +49,6 @@ export class Drawer {
             const color = parsedInstruction.color
             log(LogLevel.INFO, `Total amount of instructions for (${color.r}, ${color.g}, ${color.b}): ${parsedInstruction.instructions.length}`)
 
-            if (parsedInstruction.instructions.length > 90000) {
-                log(LogLevel.WARNING, `The current instructions has more than 90k pixels. A sleep of 4s will be applied.`)
-                await sleep(4000)
-            }
-
             await this.setColor(color)
             parsedInstruction.instructions.forEach(instruction => {
                 const pixelRelativePosition = instruction.pixel.position
@@ -73,6 +68,11 @@ export class Drawer {
                 }
 
             })
+
+            if (parsedInstruction.instructions.length > 90000) {
+                log(LogLevel.WARNING, `The color had more than 90k pixels. A sleep of 4s will be applied.`)
+                await sleep(4000)
+            }
         }
 
         log(LogLevel.OK, "Drawing finished")

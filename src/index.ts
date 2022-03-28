@@ -1,4 +1,5 @@
 import { app, BrowserWindow } from "electron"
+import path from "path"
 
 app.whenReady().then(() => {
     app.allowRendererProcessReuse = false
@@ -18,5 +19,5 @@ app.whenReady().then(() => {
     })
 
     // Loads the index
-    window.loadFile("./view/index.html")
+    window.loadFile(path.join(__dirname, "./view/index.html"))
 })
