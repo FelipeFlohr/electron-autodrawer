@@ -16,7 +16,7 @@
   },
   "postinstall": "electron-builder install-app-deps",
   "name": "autodrawer",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "Autodrawer made using Electron",
   "main": "dist/index.js",
   "scripts": {

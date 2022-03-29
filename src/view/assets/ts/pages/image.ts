@@ -4,8 +4,6 @@ import { Dimension } from "../../../../types/dimension";
 import { Canvas } from "../../../../models/canvas";
 import { bootstrapAlerts } from "./coordinates";
 import Jimp from "jimp"
-import fs from "fs"
-import { encode } from "punycode";
 
 export class Image extends Page {
     private instance = Settings.getInstance().image
