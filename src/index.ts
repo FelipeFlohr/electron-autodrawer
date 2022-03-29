@@ -1,6 +1,8 @@
 import { app, BrowserWindow } from "electron"
 import path from "path"
 
+const DEV_ENV = process.env.NODE_ENV == "dev"
+
 app.whenReady().then(() => {
     app.allowRendererProcessReuse = false
 
@@ -11,12 +13,14 @@ app.whenReady().then(() => {
         minWidth: 800,
         minHeight: 600,
         webPreferences: {
-            nodeIntegration: true,
             allowRunningInsecureContent: true,
-            enableRemoteModule: true,
             contextIsolation: false,
+            devTools: DEV_ENV,
+            enableRemoteModule: true,
+            nodeIntegration: true
         }
     })
+    window.setMenuBarVisibility(DEV_ENV)
 
     // Loads the index
     window.loadFile(path.join(__dirname, "./view/index.html"))
