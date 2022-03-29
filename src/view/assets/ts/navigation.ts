@@ -15,7 +15,11 @@ let draw: Draw
 // Creates the instance
 Settings.getInstance()
 
-// Navigation used for keeping the SPA
+/**
+ * A client side Ajax navigation. Needed for the SPA.
+ * @param hash Hash destiny to navigate.
+ * @returns null if there is no hash.
+ */
 function navThroughAjax(hash: string) {
     if (!hash) return
 
@@ -33,6 +37,9 @@ function navThroughAjax(hash: string) {
         })
 }
 
+/**
+ * Defines all links for the SPA.
+ */
 function configLinks() {
     document.querySelectorAll("[rPage]")
         .forEach(link => {
@@ -40,6 +47,9 @@ function configLinks() {
         })
 }
 
+/**
+ * Realizes the initial navigation. If hash is defined, then it will navigate to it, else it will navigate to "Welcome".
+ */
 function initialNav() {
     if (location.hash) {
         navThroughAjax(location.hash)
@@ -49,6 +59,9 @@ function initialNav() {
     }
 }
 
+/**
+ * Defines routes for the SPA, then execute each page's scripts
+ */
 function route() {
     const locationHash: string = location.hash
     const hashSplit: string[] = locationHash.split("/")

@@ -7,8 +7,10 @@ import { MouseControl } from "../../../../controls/mousecontrol";
 
 const positionValues = Settings.getInstance().positions
 
+/**
+ * Hold all the logic for "coordinates.html".
+ */
 export class Coordinates extends Page {
-
     private readonly yesMarkerHtml = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi bi-check-lg green-svg" viewBox="0 0 16 16"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" /></svg>`
     private readonly noMarkerHtml = `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="bi bi-x-lg red-svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/><path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/></svg>`
 
@@ -19,6 +21,9 @@ export class Coordinates extends Page {
         this.updateMousePos()
     }
 
+    /**
+     * Load all the Default Values.
+     */
     public async loadDefaultValues(): Promise<void> {
         const inputDivs = await this.waitForElements("div [coordinateDiv]")
 
@@ -40,6 +45,9 @@ export class Coordinates extends Page {
         })
     }
 
+    /**
+     * Defines the logic for the "Load Values" button.
+     */
     public async loadValuesButton() {
         const inputFile = document.createElement("input")
         inputFile.type = "file"
@@ -90,6 +98,9 @@ export class Coordinates extends Page {
         inputFile.click()
     }
 
+    /**
+     * Defines the logic for the "Save Values" button.
+     */
     public saveValuesButton() {
         const a = document.createElement("a")
         a.href = window.URL.createObjectURL(new Blob([JSON.stringify(positionValues.getPositions())], { type: "application/json" }))
@@ -98,6 +109,9 @@ export class Coordinates extends Page {
         a.click()
     }
 
+    /**
+     * Logic for loading the values.
+     */
     private async loadValues() {
         const inputDivs = await this.waitForElements("div [coordinateDiv]")
 
@@ -116,6 +130,9 @@ export class Coordinates extends Page {
         await this.setSvgs()
     }
 
+    /**
+     * Set all the Svgs.
+     */
     private async setSvgs(): Promise<void> {
         const inputDivs = await this.waitForElements("div [coordinateDiv]")
 
@@ -133,6 +150,9 @@ export class Coordinates extends Page {
         })
     }
 
+    /**
+     * Set the Svg for a specific coordinate.
+     */
     private async setSvg(svgPlace: Element, xInput: Element, yInput: Element, id: string): Promise<void> {
         if (parseInt(xInput["value"]) == NaN && parseInt(yInput["value"]) == NaN) {
             svgPlace.innerHTML = this.noMarkerHtml
@@ -150,6 +170,9 @@ export class Coordinates extends Page {
         }
     }
 
+    /**
+     * Set listeners for every coordinate input text.
+     */
     private async setListeners(): Promise<void> {
         const inputDivs = await this.waitForElements("div [coordinateDiv]")
 
@@ -194,6 +217,9 @@ export class Coordinates extends Page {
         })
     }
 
+    /**
+     * Update the current cursor coordinate every 100ms.
+     */
     private async updateMousePos() {
         const xElement = await this.waitForElement("#xCursorPos")
         const yElement = await this.waitForElement("#yCursorPos")
@@ -206,6 +232,9 @@ export class Coordinates extends Page {
     }
 }
 
+/**
+ * Enum for Bootstrap alerts.
+ */
 export enum bootstrapAlerts {
     SUCCESS = "alert-success",
     DANGER = "alert-danger"

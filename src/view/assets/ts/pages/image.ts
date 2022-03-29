@@ -5,6 +5,9 @@ import { Canvas } from "../../../../models/canvas";
 import { bootstrapAlerts } from "./coordinates";
 import Jimp from "jimp"
 
+/**
+ * Hold all the logic for "image.html".
+ */
 export class Image extends Page {
     private instance = Settings.getInstance().image
 
@@ -16,6 +19,10 @@ export class Image extends Page {
         this.loadImageOnPage()
     }
 
+    /**
+     * Defines the logic for the "Load Image" button.
+     * @param imgElement The HTML "Input Upload" element.
+     */
     public async loadImageButton(imgElement: HTMLInputElement) {
         const fileReader = new FileReader()
         fileReader.readAsArrayBuffer(imgElement.files[0])
@@ -75,6 +82,9 @@ export class Image extends Page {
         }
     }
 
+    /**
+     * Load and show the image on the page.
+     */
     private loadImageOnPage() {
         this.waitForElement("#imageLoaded")
             .then(element => {
@@ -116,6 +126,11 @@ export class Image extends Page {
             })
     }
 
+    /**
+     * Creates the image element.
+     * @param src The "src" attribute.
+     * @returns A HTMLImageElement.
+     */
     private createImageElement(src: string): HTMLImageElement {
         const img = document.createElement("img")
         img.src = src
@@ -127,6 +142,10 @@ export class Image extends Page {
         return img
     }
 
+    /**
+     * Defines the animation when Mouse hovers on the image.
+     * @param e The MouseEvent.
+     */
     private imgAnimationMouseHover(e: MouseEvent) {
         if (e.currentTarget instanceof Element) {
             e.currentTarget.classList.remove("img-deactive")
@@ -134,6 +153,10 @@ export class Image extends Page {
         }
     }
 
+    /**
+     * Defines the animation when Mouse leaves the image.
+     * @param e The MouseEvent.
+     */
     private imgAnimationMouseLeave(e: MouseEvent) {
         if (e.currentTarget instanceof Element) {
             e.currentTarget.classList.remove("img-active")

@@ -4,8 +4,10 @@ import defaultValues from "../../../../json/defaultvalues.json"
 import { Settings } from "../settings";
 import { bootstrapAlerts } from "./coordinates";
 
+/**
+ * Hold all the logic for "tools.html".
+ */
 export class ToolsValues extends Page {
-
     private readonly zoomAmountRangeSelector = "#zoomAmountRange"
     private readonly brushSizeRangeSelector = "#brushSizeRange"
     private readonly brushOpacityRangeSelector = "#brushOpacityRange"
@@ -22,6 +24,9 @@ export class ToolsValues extends Page {
         this.addRangeListeners()
     }
 
+    /**
+     * Load default values.
+     */
     public loadDefaultValues() {
         for (let key in defaultValues) {
             this.getInstance()[key] = defaultValues[key]
@@ -30,6 +35,9 @@ export class ToolsValues extends Page {
         this.loadValues()
     }
 
+    /**
+     * Defines the logic for "Load Values" button
+     */
     public async loadValuesButton() {
         const inputFile = document.createElement("input")
         inputFile.type = "file"
@@ -85,6 +93,9 @@ export class ToolsValues extends Page {
         inputFile.click()
     }
 
+    /**
+     * Defines the logic for "Save Values" button
+     */
     public saveValuesButton() {
         const a = document.createElement("a")
         a.href = window.URL.createObjectURL(new Blob([JSON.stringify(this.getInstance().getValues())], { type: "application/json" }))
@@ -93,6 +104,10 @@ export class ToolsValues extends Page {
         a.click()
     }
 
+    /**
+     * Changes the tool to the specified one
+     * @param tool Tool to change to.
+     */
     public changeTool(tool: string) {
         this.waitForElement(this.toolSelectedSpanSelector).then(element => {
             switch(tool) {
@@ -125,6 +140,9 @@ export class ToolsValues extends Page {
         })
     }
 
+    /**
+     * Add listeners for the ranges.
+     */
     private async addRangeListeners() {
         const ranges = await this.waitForElements(`input[valueRange]`)
         ranges.forEach(node => {
@@ -141,6 +159,9 @@ export class ToolsValues extends Page {
         })
     }
 
+    /**
+     * Loads the values.
+     */
     private async loadValues() {
         this.redefineBrushSizeRange()
 
@@ -175,6 +196,9 @@ export class ToolsValues extends Page {
         this.waitForElement(this.brushOpacitySpanSelector).then(element => element.innerHTML = `${this.getInstance().brushOpacity}`)
     }
 
+    /**
+     * Redefines the min and max value for the Brush Size range.
+     */
     private async redefineBrushSizeRange() {
         const brushSize = await this.waitForElement(this.brushSizeRangeSelector)
         const currentTool = Object.keys(Tool)[Object.values(Tool).indexOf(this.getInstance().tool)]

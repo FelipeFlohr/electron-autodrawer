@@ -1,5 +1,3 @@
-import { getConfig } from "./config";
-
 /**
  * Method similar to Java's *Thread.sleep*.
  * @param ms Time to *sleep* in milliseconds

@@ -1,5 +1,8 @@
 import { Tool, ToolMinBrushSizeValue, ToolMaxBrushSizeValue, Values } from "../../../../types/values"
 
+/**
+ * Hold the "Values".
+ */
 export class ToolsValues {
 
     private _zoom: number = 1
@@ -7,6 +10,10 @@ export class ToolsValues {
     private _brushOpacity: number = 100
     private _tool: Tool = Tool.PIXEL_PENCIL
 
+    /**
+     * Get all the fields and return them as a "Values" type.
+     * @returns The fields as a "Values" type.
+     */
     public getValues(): Values {
         return {
             zoom: this._zoom,
@@ -16,11 +23,18 @@ export class ToolsValues {
         }
     }
 
+    /**
+     * Validates the brush size and the current tool. If valid, then the brush size will be applied to this class field.
+     */
     public validateBrushSize(): void {
         const currentTool = Object.keys(Tool)[Object.values(Tool).indexOf(this.tool)]
         this.brushSize = this.brushSizeValidator(this._brushSize) ? this._brushSize : ToolMinBrushSizeValue[currentTool]
     }
 
+    /**
+     * Checks all attributes and return true if all is valid.
+     * @returns return true if all attributes are valid.
+     */
     public isAllValuesValid(): boolean {
         let allValid = true
         const attributes = [this.zoom, this.brushSize, this.brushOpacity, this.tool]
@@ -31,11 +45,21 @@ export class ToolsValues {
         return allValid
     }
 
+    /**
+     * Validates the zoom and opacity.
+     * @param value Zoom or opacity value.
+     * @returns True if value is greater than 0 and smaller or equal to 100.
+     */
     private zoomAndOpacityValidator(value: number): boolean {
         if (value == null) return false
         return value > 0 && value <= 100
     }
 
+    /**
+     * Validates the brush size.
+     * @param value Brush size.
+     * @returns True if value is compatible with the current tool.
+     */
     private brushSizeValidator(value: number): boolean {
         if (value == null) return false
         switch (this._tool) {

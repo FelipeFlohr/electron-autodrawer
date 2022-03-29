@@ -1,6 +1,9 @@
 import { Point } from "../../../../types/point"
 import { Positions } from "../../../../types/positions"
 
+/**
+ * Holds all the coordinates.
+ */
 export class PositionValues {
 
     private _toolMarker?: Point = null
@@ -20,6 +23,10 @@ export class PositionValues {
     private _canvasBottomRightCorner?: Point = null
     private _contextRedefineCanvas?: Point = null
 
+    /**
+     * Checks all the coordinates and return true if all valid.
+     * @returns True if all coords are valid.
+     */
     public isAllCoordsValid(): boolean {
         let valid = true
 
@@ -34,6 +41,10 @@ export class PositionValues {
         return valid
     }
 
+    /**
+     * Get all the fields and return them as a "Positions" type.
+     * @returns The fields as "Positions" types.
+     */
     public getPositions(): Positions {
         return {
             toolMarker: this.toolMarker,
@@ -55,6 +66,11 @@ export class PositionValues {
         }
     }
 
+    /**
+     * Validates a specified Point.
+     * @param point Point to validate.
+     * @returns Return the Point if valid, else returns null.
+     */
     private validator(point: Point): Point {
         if (typeof(point.x) != "number" || typeof(point.y) != "number") return null
 

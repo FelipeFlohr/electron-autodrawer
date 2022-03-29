@@ -1,9 +1,10 @@
-import { Dimension } from "../../../types/dimension"
-import { Canvas } from "../../../models/canvas"
 import { ImageValues } from "./values/imagevalues"
 import { PositionValues } from "./values/positionsvalues"
 import { ToolsValues } from "./values/toolsvalues"
 
+/**
+ * A Settings class. It's only instanciated once. Holds values and other instances.
+ */
 export class Settings {
 
     static instance: Settings
