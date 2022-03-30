@@ -13,7 +13,7 @@ export class Image extends Page {
 
     run(): void {
         if (!Settings.getInstance().positions.isAllCoordsValid()) {
-            this.waitForElement("#input-form").then(element => element.innerHTML = `<span class="fs-3">Before loading the image, it is neccessary to set all the coordinates.</span>`)
+            this.waitForElement("#input-form").then(element => element.innerHTML = `<span class="fs-3">Before loading the image, it is necessary to set all the coordinates.</span>`)
         }
 
         this.loadImageOnPage()
@@ -91,11 +91,11 @@ export class Image extends Page {
                 if (this.instance.image != null) {
                     // Based of https://stackoverflow.com/a/246813/1464608
                     const encode64 = (input: any) => {
-                        var keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
-                        var output = "";
-                        var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
-                        var i = 0;
-                    
+                        const keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+                        let output = "";
+                        let chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+                        let i = 0;
+
                         while (i < input.length) {
                             chr1 = input[i++];
                             chr2 = i < input.length ? input[i++] : Number.NaN; // Not sure if the index 

@@ -15,7 +15,7 @@ export class ImageParser {
 
     /**
      * Class constructor
-     * @param path - Path to image
+     * @param image - ArrayBuffer containing the image
      */
     constructor(image: ArrayBuffer) {
         this._image = Buffer.from(image)

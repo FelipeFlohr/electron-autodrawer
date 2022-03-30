@@ -68,7 +68,7 @@ export abstract class Page {
     }
 
     /**
-     * Similar to a constructor, but can be dealt in a async way. Must be implemented in each children.
+     * Similar to a constructor, but can be dealt in an async way. Must be implemented in each child.
      */
     abstract run(): void;
 }

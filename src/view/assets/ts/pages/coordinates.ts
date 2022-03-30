@@ -131,7 +131,7 @@ export class Coordinates extends Page {
     }
 
     /**
-     * Set all the Svgs.
+     * Set all the SVGs.
      */
     private async setSvgs(): Promise<void> {
         const inputDivs = await this.waitForElements("div [coordinateDiv]")

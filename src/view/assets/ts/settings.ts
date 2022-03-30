@@ -3,7 +3,7 @@ import { PositionValues } from "./values/positionsvalues"
 import { ToolsValues } from "./values/toolsvalues"
 
 /**
- * A Settings class. It's only instanciated once. Holds values and other instances.
+ * A Settings class. It's only instantiated once. Holds values and other instances.
  */
 export class Settings {
 
