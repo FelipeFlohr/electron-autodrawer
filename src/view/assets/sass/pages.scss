@@ -3,6 +3,10 @@ main {
     padding: 32px 18px;
 }
 
+footer * {
+    color: $gray-600;
+}
+
 .fs-huge {
     font-size: calc(2rem + 1.5vw);
 }
